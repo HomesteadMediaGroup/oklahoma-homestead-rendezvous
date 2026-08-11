@@ -2,72 +2,20 @@
   "ticket_url": "https://events.ticketleap.com/tickets/oklahomahomesteadrendezvous/oklahoma-homestead-rendezvous",
   "logo_path": "https://drive.google.com/thumbnail?id=146ox6qhzK7T61zec4Eeo6O9_FGNn8C1_&sz=w400",
   "speakers": [
-    {
-      "name": "7-Steps to Self-Reliance",
-      "title": "",
-      "topic": "https://www.facebook.com/TheFarm2TableShow/",
-      "bio": "1C1p5ZRl9Z2rLqTiB4ELFcHZIWnSKH2eA",
-      "photo": "",
-      "link": ""
-    }
+    { "name": "Dewayne Hall",          "title": "Red Feather Farms",    "topic": "Herbal Remedies & Meat Goats",                    "bio": "", "link": "", "photo": "https://drive.google.com/thumbnail?id=1heR7QSgr_2XD4ijS16flA4u66SlWz9KH&sz=w400" },
+    { "name": "Pat Cotten",            "title": "Bending Tree Ranch",   "topic": "Meat Goats",                                     "bio": "", "link": "", "photo": "https://drive.google.com/thumbnail?id=1DY5BjpsJJoOT4GikSv2P2tXJXDIxZLHf&sz=w400" },
+    { "name": "Ashley & Stewart Clouse", "title": "Restoration Farms", "topic": "Herbal Medicine · Plant Walk · Sheep Shearing",   "bio": "", "link": "", "photo": "https://drive.google.com/thumbnail?id=1HkC9WcCyZ7pfH8s2Waou6LNT7PLDzOcH&sz=w400" },
+    { "name": "LaRaine & Chris Cihak", "title": "Bluff Creek Acres",   "topic": "Water Catchment · Canning · Homestead 101",       "bio": "", "link": "", "photo": "https://drive.google.com/thumbnail?id=1ds7WKMLae4ARgiijFZ28pSi8WRDC-ILc&sz=w400" }
   ],
   "sponsors": [
-    {
-      "name": "City of McAlester",
-      "tag": "McAlester, Oklahoma",
-      "level": "sponsor",
-      "logo": "https://drive.google.com/thumbnail?id=1QDWpS8hNtkywuGPfzqm_IISvmrRbuZY9&sz=w300",
-      "website": ""
-    },
-    {
-      "name": "Sam Wamplers Freedom Ford",
-      "tag": "Official Auto Sponsor",
-      "level": "sponsor",
-      "logo": "https://drive.google.com/thumbnail?id=1xxXoL_S0O0gJY31yxVE-N2K-IBqJqrgI&sz=w300",
-      "website": ""
-    },
-    {
-      "name": "Big Vee Feed",
-      "tag": "Feed & Farm Supply",
-      "level": "sponsor",
-      "logo": "https://drive.google.com/thumbnail?id=1mjp_nPLC9GnlDzmrlac7MhHOV1U4bAFx&sz=w300",
-      "website": ""
-    },
-    {
-      "name": "Adam's True Value & Ag Supply",
-      "tag": "Hardware & Agriculture",
-      "level": "sponsor",
-      "logo": "https://drive.google.com/thumbnail?id=1kgI2gbohc-cf-i2YTPfOKdm5qpbbdaQu&sz=w300",
-      "website": ""
-    },
-    {
-      "name": "Wilkinson Bros.",
-      "tag": "918-916-2052",
-      "level": "sponsor",
-      "logo": "https://drive.google.com/thumbnail?id=1YNnbEXOIiBkoX_mloVtqDWmGH6TjuKAY&sz=w300",
-      "website": ""
-    },
-    {
-      "name": "Baja Gold",
-      "tag": "Salt Co.",
-      "level": "sponsor",
-      "logo": "",
-      "website": ""
-    },
-    {
-      "name": "Sea-90",
-      "tag": "Ocean Minerals",
-      "level": "sponsor",
-      "logo": "",
-      "website": ""
-    },
-    {
-      "name": "Happy Cow",
-      "tag": "Homestead",
-      "level": "sponsor",
-      "logo": "",
-      "website": ""
-    }
+    { "name": "City of McAlester",            "tag": "McAlester, Oklahoma",   "level": "sponsor", "logo": "https://drive.google.com/thumbnail?id=1QDWpS8hNtkywuGPfzqm_IISvmrRbuZY9&sz=w300", "website": "" },
+    { "name": "Sam Wamplers Freedom Ford",     "tag": "Official Auto Sponsor", "level": "sponsor", "logo": "https://drive.google.com/thumbnail?id=1xxXoL_S0O0gJY31yxVE-N2K-IBqJqrgI&sz=w300", "website": "" },
+    { "name": "Big Vee Feed",                  "tag": "Feed & Farm Supply",    "level": "sponsor", "logo": "https://drive.google.com/thumbnail?id=1mjp_nPLC9GnlDzmrlac7MhHOV1U4bAFx&sz=w300", "website": "" },
+    { "name": "Adam's True Value & Ag Supply", "tag": "Hardware & Agriculture","level": "sponsor", "logo": "https://drive.google.com/thumbnail?id=1kgI2gbohc-cf-i2YTPfOKdm5qpbbdaQu&sz=w300", "website": "" },
+    { "name": "Wilkinson Bros.",               "tag": "918-916-2052",          "level": "sponsor", "logo": "https://drive.google.com/thumbnail?id=1YNnbEXOIiBkoX_mloVtqDWmGH6TjuKAY&sz=w300", "website": "" },
+    { "name": "Baja Gold",                     "tag": "Salt Co.",              "level": "sponsor", "logo": "", "website": "" },
+    { "name": "Sea-90",                        "tag": "Ocean Minerals",        "level": "sponsor", "logo": "", "website": "" },
+    { "name": "Happy Cow",                     "tag": "Homestead",             "level": "sponsor", "logo": "", "website": "" }
   ],
   "hero_photo": "https://drive.google.com/thumbnail?id=1zF8vAlKO5EwsWgAN1wB6bwE8Bm07K8wQ&sz=w1600",
   "event_photos": [
