@@ -5,10 +5,11 @@
  * 1. Open your Google Form → ⋮ → Script editor
  * 2. Paste this entire file
  * 3. Set your secrets: Extensions → Apps Script → Project Settings → Script Properties
- *    GITHUB_TOKEN  = your GitHub personal access token (needs repo scope)
- *    GITHUB_OWNER  = HomesteadMediaGroup
- *    GITHUB_REPO   = oklahoma-homestead-rendezvous
- *    GITHUB_FILE   = site-data.json
+ *    GITHUB_TOKEN        = your GitHub personal access token (needs repo scope)
+ *    GITHUB_OWNER        = HomesteadMediaGroup
+ *    GITHUB_REPO         = oklahoma-homestead-rendezvous
+ *    GITHUB_FILE         = site-data.json
+ *    NETLIFY_BUILD_HOOK  = https://api.netlify.com/build_hooks/6a7a786ba453163d941311d8
  * 4. Run setupTrigger() once to install the form-submit trigger
  */
 
@@ -184,6 +185,13 @@ function onFormSubmit(e) {
     Logger.log('GitHub push result: ' + putResp.getResponseCode());
     if (putResp.getResponseCode() !== 200) {
       Logger.log('Error: ' + JSON.stringify(result));
+    } else {
+      // Trigger Netlify redeploy
+      var buildHook = props.NETLIFY_BUILD_HOOK;
+      if (buildHook) {
+        UrlFetchApp.fetch(buildHook, { method: 'POST', muteHttpExceptions: true });
+        Logger.log('Netlify build triggered.');
+      }
     }
 
   } catch(err) {
