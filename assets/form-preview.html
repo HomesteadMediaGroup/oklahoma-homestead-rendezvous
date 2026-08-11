@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Form Preview — Homestead Media Group</title>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #f0ebf8;
+  font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
+  padding: 0 0 60px;
+}
+
+/* Google Forms top bar */
+.gf-topbar {
+  background: white;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  gap: 12px;
+}
+.gf-topbar-logo {
+  font-size: 22px;
+  color: #7248B9;
+  font-family: 'Google Sans', sans-serif;
+}
+.gf-topbar-title {
+  font-size: 18px;
+  color: #202124;
+  font-family: 'Google Sans', sans-serif;
+}
+
+/* Progress bar */
+.gf-progress {
+  height: 4px;
+  background: #e0e0e0;
+}
+.gf-progress-fill {
+  height: 100%;
+  width: 16%;
+  background: #7248B9;
+}
+
+/* Form container */
+.gf-container {
+  max-width: 640px;
+  margin: 24px auto 0;
+  padding: 0 16px;
+}
+
+/* Header card with banner */
+.gf-header-card {
+  background: white;
+  border-radius: 8px 8px 0 0;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  border-top: 10px solid #7248B9;
+}
+.gf-banner {
+  width: 100%;
+  display: block;
+}
+.gf-header-text {
+  padding: 24px;
+}
+.gf-form-title {
+  font-family: 'Google Sans', sans-serif;
+  font-size: 26px;
+  color: #202124;
+  margin-bottom: 8px;
+}
+.gf-form-desc {
+  font-size: 13px;
+  color: #444746;
+  line-height: 1.6;
+}
+.gf-required-note {
+  font-size: 12px;
+  color: #c5221f;
+  margin-top: 8px;
+}
+
+/* Section card */
+.gf-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  padding: 24px;
+  margin-top: 12px;
+}
+.gf-section-title {
+  font-family: 'Google Sans', sans-serif;
+  font-size: 18px;
+  color: #202124;
+  margin-bottom: 4px;
+}
+.gf-section-desc {
+  font-size: 13px;
+  color: #444746;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+.gf-field {
+  margin-bottom: 24px;
+}
+.gf-field:last-child { margin-bottom: 0; }
+.gf-label {
+  font-size: 14px;
+  color: #202124;
+  margin-bottom: 8px;
+  display: block;
+}
+.gf-label .req { color: #c5221f; margin-left: 3px; }
+.gf-input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #dadce0;
+  padding: 8px 0;
+  font-size: 14px;
+  color: #202124;
+  outline: none;
+  background: transparent;
+  font-family: 'Roboto', sans-serif;
+}
+.gf-input:focus { border-bottom-color: #7248B9; border-bottom-width: 2px; }
+
+/* Next button */
+.gf-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+}
+.gf-btn-next {
+  background: #7248B9;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 24px;
+  font-family: 'Google Sans', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+}
+.gf-btn-clear {
+  background: none;
+  border: none;
+  color: #7248B9;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+}
+
+.gf-footer {
+  text-align: center;
+  margin-top: 32px;
+  font-size: 13px;
+  color: #70757a;
+}
+.gf-footer a { color: #70757a; }
+
+/* Preview label */
+.preview-label {
+  text-align: center;
+  padding: 12px;
+  background: #333;
+  color: #aaa;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+</style>
+</head>
+<body>
+
+<div class="preview-label">📋 Google Form Preview — Homestead Media Group Banner</div>
+
+<!-- Google Forms top bar simulation -->
+<div class="gf-topbar">
+  <div class="gf-topbar-logo">📋</div>
+  <div class="gf-topbar-title">Homestead Media Group — Asset Intake</div>
+</div>
+<div class="gf-progress"><div class="gf-progress-fill"></div></div>
+
+<div class="gf-container">
+
+  <!-- Header card with banner -->
+  <div class="gf-header-card">
+    <img class="gf-banner" src="hmg-form-banner.png" alt="Homestead Media Group">
+    <div class="gf-header-text">
+      <div class="gf-form-title">Homestead Media Group — Asset Intake</div>
+      <div class="gf-form-desc">Fill out each section below. Uploaded files go directly to Google Drive. Skip any section you do not have ready yet and come back later.</div>
+      <div class="gf-required-note">* Indicates required question</div>
+    </div>
+  </div>
+
+  <!-- Section 1 card -->
+  <div class="gf-card">
+    <div class="gf-section-title">Section 1 of 6 — Your Contact Info</div>
+    <div class="gf-section-desc">So we know who submitted this and can follow up with questions.</div>
+
+    <div class="gf-field">
+      <label class="gf-label">Your Full Name <span class="req">*</span></label>
+      <input class="gf-input" type="text" placeholder="Your answer">
+    </div>
+    <div class="gf-field">
+      <label class="gf-label">Your Role / Title</label>
+      <input class="gf-input" type="text" placeholder="e.g. Event Founder, Coordinator">
+    </div>
+    <div class="gf-field">
+      <label class="gf-label">Email Address <span class="req">*</span></label>
+      <input class="gf-input" type="email" placeholder="Your answer">
+    </div>
+    <div class="gf-field">
+      <label class="gf-label">Phone Number</label>
+      <input class="gf-input" type="text" placeholder="Your answer">
+    </div>
+
+    <div class="gf-actions">
+      <button class="gf-btn-clear">Clear form</button>
+      <button class="gf-btn-next">Next</button>
+    </div>
+  </div>
+
+  <div class="gf-footer">
+    This content is neither created nor endorsed by Google.<br>
+    <a href="#">Report Abuse</a> · <a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a>
+  </div>
+
+</div>
+</body>
+</html>

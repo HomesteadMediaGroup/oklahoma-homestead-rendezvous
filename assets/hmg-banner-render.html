@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #333; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; gap: 20px; }
+  #banner {
+    width: 1600px;
+    height: 400px;
+    background: #0d0d0d;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Arial Black', 'Arial', sans-serif;
+  }
+
+  /* Background texture lines */
+  #banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 40px,
+      rgba(180,0,0,0.03) 40px,
+      rgba(180,0,0,0.03) 41px
+    );
+  }
+
+  /* Top red bar */
+  .bar-top {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #cc0000, #ff2020, #cc0000);
+  }
+
+  /* Bottom red bar */
+  .bar-bottom {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #cc0000, #ff2020, #cc0000);
+  }
+
+  /* Left red accent */
+  .bar-left {
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 6px;
+    background: #cc0000;
+  }
+
+  /* Right red accent */
+  .bar-right {
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 6px;
+    background: #cc0000;
+  }
+
+  /* Red glow behind text */
+  .glow {
+    position: absolute;
+    width: 900px;
+    height: 200px;
+    background: radial-gradient(ellipse, rgba(180,0,0,0.15) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+
+  .eyebrow {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: #cc0000;
+    margin-bottom: 18px;
+    font-weight: 600;
+  }
+
+  .main-title {
+    font-family: 'Arial Black', Arial, sans-serif;
+    font-size: 72px;
+    font-weight: 900;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    color: #ffffff;
+    line-height: 1;
+    margin-bottom: 20px;
+    text-shadow: 0 0 60px rgba(200,0,0,0.3);
+  }
+
+  .divider {
+    width: 120px;
+    height: 3px;
+    background: #cc0000;
+    margin: 0 auto 20px;
+  }
+
+  .subtitle {
+    font-family: Arial, sans-serif;
+    font-size: 22px;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: #888;
+    font-weight: 400;
+  }
+
+  /* Corner marks */
+  .corner { position: absolute; width: 24px; height: 24px; }
+  .corner.tl { top: 14px; left: 20px; border-top: 2px solid #cc0000; border-left: 2px solid #cc0000; }
+  .corner.tr { top: 14px; right: 20px; border-top: 2px solid #cc0000; border-right: 2px solid #cc0000; }
+  .corner.bl { bottom: 14px; left: 20px; border-bottom: 2px solid #cc0000; border-left: 2px solid #cc0000; }
+  .corner.br { bottom: 14px; right: 20px; border-bottom: 2px solid #cc0000; border-right: 2px solid #cc0000; }
+</style>
+</head>
+<body>
+
+<div id="banner">
+  <div class="bar-top"></div>
+  <div class="bar-bottom"></div>
+  <div class="bar-left"></div>
+  <div class="bar-right"></div>
+  <div class="glow"></div>
+  <div class="corner tl"></div>
+  <div class="corner tr"></div>
+  <div class="corner bl"></div>
+  <div class="corner br"></div>
+  <div class="content">
+    <div class="eyebrow">Powered by</div>
+    <div class="main-title">Homestead Media Group</div>
+    <div class="divider"></div>
+    <div class="subtitle">Asset Intake Form</div>
+  </div>
+</div>
+
+<button onclick="downloadPNG()" style="
+  padding: 14px 32px;
+  background: #cc0000;
+  color: white;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 4px;
+">⬇ Download PNG</button>
+
+<script>
+async function downloadPNG() {
+  const banner = document.getElementById('banner');
+  // Use html2canvas if available, otherwise guide user
+  if (typeof html2canvas !== 'undefined') {
+    const canvas = await html2canvas(banner, { width: 1600, height: 400, scale: 1 });
+    const link = document.createElement('a');
+    link.download = 'hmg-form-banner.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  } else {
+    alert('To save: Right-click the banner → "Save image as..." or take a screenshot of just the banner area.');
+  }
+}
+</script>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+</body>
+</html>

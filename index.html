@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oklahoma Homestead Rendezvous — Sept 25–26, 2026 · McAlester, OK</title>
+
+<!-- Open Graph -->
+<meta property="og:type"         content="website">
+<meta property="og:url"          content="https://oklahomahomesteadrendezvous.netlify.app">
+<meta property="og:title"        content="Oklahoma Homestead Rendezvous — Sept 25–26, 2026">
+<meta property="og:description"  content="Bringing the Past to the Present, for the Future. Two days of speakers, demos, real talk sessions, vendors & community. McAlester, OK.">
+<meta property="og:image"        content="https://oklahomahomesteadrendezvous.netlify.app/og-preview.jpg">
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="Oklahoma Homestead Rendezvous — Sept 25–26, 2026">
+<meta name="twitter:description" content="Bringing the Past to the Present, for the Future. Sept 25–26, 2026 · McAlester, OK">
+<meta name="twitter:image"       content="https://oklahomahomesteadrendezvous.netlify.app/og-preview.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --navy:   #1a2744;
+  --navy2:  #0f1829;
+  --teal:   #2ab8b0;
+  --teal2:  #1d8f88;
+  --cream:  #f9f3e3;
+  --tan:    #ede4cc;
+  --gold:   #c8a84b;
+  --red:    #b52a1a;
+  --dark:   #1a1a1a;
+  --text:   #333;
+  --white:  #ffffff;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Open Sans', sans-serif; color: var(--text); background: var(--white); }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: var(--navy2);
+  border-bottom: 3px solid var(--teal);
+  padding: 0 32px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.nav-brand {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--white);
+}
+.nav-brand span { color: var(--teal); }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase;
+  color: #ccc; text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--teal); }
+.nav-cta {
+  background: var(--teal); color: var(--white) !important;
+  padding: 8px 18px; border-radius: 4px;
+}
+.nav-cta:hover { background: var(--teal2) !important; color: var(--white) !important; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(160deg, var(--navy2) 0%, var(--navy) 60%, #1d3a50 100%);
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 100px 24px 60px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url('https://drive.google.com/thumbnail?id=1zF8vAlKO5EwsWgAN1wB6bwE8Bm07K8wQ&sz=w1600') center/cover no-repeat;
+  opacity: 0.12;
+}
+.hero-inner { position: relative; max-width: 800px; }
+
+.hero-logo {
+  width: 200px; height: 200px;
+  border: 3px solid var(--teal);
+  border-radius: 50%;
+  background: rgba(255,255,255,0.92);
+  display: flex;
+  align-items: center; justify-content: center;
+  margin: 0 auto 28px;
+  padding: 8px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.4);
+  overflow: hidden;
+}
+.hero-logo .logo-top {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.55rem; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 4px;
+}
+.hero-logo .logo-windmill { font-size: 2rem; line-height: 1; }
+.hero-logo .logo-main {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.62rem; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--white); margin-top: 4px; text-align: center; line-height: 1.4;
+}
+.hero-logo .logo-bottom {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.5rem; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--teal); margin-top: 2px;
+}
+
+.hero-eyebrow {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 16px;
+}
+.hero h1 {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--white); line-height: 1.1; margin-bottom: 8px;
+}
+.hero h1 span { color: var(--teal); }
+.hero-tagline {
+  font-family: 'Lora', serif; font-style: italic;
+  font-size: 1.1rem; color: #aac8d0; margin: 16px 0 32px;
+}
+.hero-date-bar {
+  display: inline-flex; gap: 0; margin-bottom: 36px;
+  border: 2px solid var(--teal); border-radius: 6px; overflow: hidden;
+}
+.hero-date-item {
+  padding: 12px 24px; text-align: center;
+  border-right: 1px solid var(--teal);
+}
+.hero-date-item:last-child { border-right: none; }
+.hero-date-item .label {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--teal); display: block; margin-bottom: 3px;
+}
+.hero-date-item .value {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem; font-weight: 600; color: var(--white);
+}
+
+/* Countdown */
+.hero-countdown { display: flex; gap: 0; justify-content: center; margin-bottom: 32px; }
+.countdown-unit { padding: 12px 20px; text-align: center; border-right: 1px solid rgba(42,184,176,0.4); }
+.countdown-unit:last-child { border-right: none; }
+.countdown-num { font-family: 'Oswald', sans-serif; font-size: 2.2rem; font-weight: 700; color: var(--teal); display: block; line-height: 1; }
+.countdown-label { font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.5); display: block; margin-top: 4px; }
+.countdown-eyebrow { font-family: 'Oswald', sans-serif; font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.45); text-align: center; margin-bottom: 8px; }
+
+.hero-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.btn {
+  display: inline-block; padding: 14px 32px; border-radius: 5px;
+  font-family: 'Oswald', sans-serif; font-size: 0.95rem;
+  font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  text-decoration: none; transition: all 0.2s; cursor: pointer; border: none;
+}
+.btn-primary { background: var(--teal); color: var(--white); }
+.btn-primary:hover { background: var(--teal2); transform: translateY(-2px); }
+.btn-outline { background: transparent; color: var(--white); border: 2px solid var(--white); }
+.btn-outline:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+.btn-navy { background: var(--navy); color: var(--white); }
+.btn-navy:hover { background: var(--navy2); }
+
+/* ── STATS BAR ── */
+.stats-bar {
+  background: var(--teal);
+  padding: 20px 32px;
+  display: flex; justify-content: center; flex-wrap: wrap; gap: 0;
+}
+.stat-item { padding: 8px 40px; text-align: center; border-right: 1px solid rgba(255,255,255,0.3); }
+.stat-item:last-child { border-right: none; }
+.stat-num { font-family: 'Oswald', sans-serif; font-size: 1.8rem; font-weight: 700; color: var(--white); display: block; }
+.stat-label { font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.85); }
+
+/* ── SECTIONS ── */
+section { padding: 80px 24px; }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+.section-eyebrow { font-family: 'Oswald', sans-serif; font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; color: var(--teal); margin-bottom: 10px; text-align: center; }
+.section-title { font-family: 'Oswald', sans-serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--navy); text-align: center; margin-bottom: 16px; }
+.section-sub { font-family: 'Lora', serif; font-style: italic; font-size: 1.05rem; color: #666; text-align: center; max-width: 620px; margin: 0 auto 52px; line-height: 1.7; }
+.teal-line { width: 60px; height: 4px; background: var(--teal); margin: 0 auto 52px; border-radius: 2px; }
+
+/* ── ABOUT ── */
+.about-section { background: var(--cream); }
+.hook-questions { max-width: 720px; margin: 0 auto 48px; text-align: center; }
+.hook-questions p { font-family: 'Lora', serif; font-size: 1.15rem; color: var(--navy); margin-bottom: 14px; line-height: 1.6; }
+.hook-questions p strong { color: var(--teal2); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; max-width: 900px; margin: 0 auto; }
+.about-text p { font-size: 1rem; line-height: 1.8; color: var(--text); margin-bottom: 16px; }
+.about-quote { background: var(--navy); border-left: 5px solid var(--teal); border-radius: 6px; padding: 32px 28px; text-align: center; }
+.about-quote blockquote { font-family: 'Lora', serif; font-style: italic; font-size: 1.15rem; color: var(--white); line-height: 1.7; margin-bottom: 16px; }
+.about-quote cite { font-family: 'Oswald', sans-serif; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); }
+
+/* ── WHAT TO EXPECT ── */
+.expect-section { background: var(--white); }
+.expect-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px; }
+.expect-card { background: var(--cream); border-radius: 8px; padding: 36px 24px; text-align: center; border-top: 4px solid var(--teal); transition: transform 0.2s, box-shadow 0.2s; }
+.expect-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+.expect-icon { font-size: 2.8rem; margin-bottom: 16px; display: block; }
+.expect-card h3 { font-family: 'Oswald', sans-serif; font-size: 1rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--navy); margin-bottom: 10px; }
+.expect-card p { font-size: 0.88rem; color: #666; line-height: 1.6; }
+
+/* ── SCHEDULE ── */
+.schedule-section { background: var(--navy); }
+.schedule-section .section-title { color: var(--white); }
+.schedule-section .section-sub { color: #aaa; }
+.schedule-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 900px; margin: 0 auto; }
+.schedule-day { background: rgba(255,255,255,0.05); border: 1px solid rgba(42,184,176,0.3); border-radius: 8px; overflow: hidden; }
+.schedule-day-header { background: var(--teal); padding: 16px 24px; display: flex; align-items: center; gap: 12px; }
+.schedule-day-header h3 { font-family: 'Oswald', sans-serif; font-size: 1.1rem; letter-spacing: 1px; text-transform: uppercase; color: var(--white); }
+.schedule-day-header .day-date { font-size: 0.78rem; color: rgba(255,255,255,0.8); margin-top: 2px; }
+.schedule-items { padding: 20px 24px; }
+.schedule-item { display: flex; gap: 14px; margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.schedule-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.schedule-time { font-family: 'Oswald', sans-serif; font-size: 0.75rem; color: var(--teal); min-width: 60px; padding-top: 2px; letter-spacing: 0.5px; }
+.schedule-desc { font-size: 0.88rem; color: #ccc; line-height: 1.5; }
+.schedule-desc strong { color: var(--white); display: block; margin-bottom: 2px; }
+
+/* ── SPEAKER MODAL ── */
+.speaker-modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 500;
+  background: rgba(10,18,40,0.88); backdrop-filter: blur(4px);
+  align-items: center; justify-content: center; padding: 24px;
+}
+.speaker-modal-overlay.open { display: flex; }
+.speaker-modal {
+  background: var(--white); border-radius: 12px; overflow: hidden;
+  max-width: 560px; width: 100%; box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  position: relative; max-height: 90vh; overflow-y: auto;
+}
+.speaker-modal-photo { width: 100%; max-height: 320px; object-fit: contain; display: block; background: var(--navy); }
+.speaker-modal-photo-placeholder { width: 100%; height: 200px; background: linear-gradient(135deg, var(--navy) 0%, #1d3a50 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem; }
+.speaker-modal-body { padding: 28px 32px 32px; }
+.speaker-modal-name { font-family: 'Oswald', sans-serif; font-size: 1.6rem; letter-spacing: 1px; text-transform: uppercase; color: var(--navy); margin-bottom: 4px; }
+.speaker-modal-title { font-size: 0.9rem; color: var(--teal2); font-weight: 600; margin-bottom: 12px; }
+.speaker-modal-topic { display: inline-block; background: var(--cream); border: 1px solid var(--tan); border-radius: 20px; padding: 4px 14px; font-size: 0.78rem; color: #555; margin-bottom: 20px; }
+.speaker-modal-bio { font-size: 0.95rem; color: #444; line-height: 1.8; }
+.speaker-modal-bio-placeholder { font-family: 'Lora', serif; font-style: italic; font-size: 0.95rem; color: #999; line-height: 1.7; }
+.speaker-modal-close {
+  position: absolute; top: 12px; right: 14px;
+  background: rgba(0,0,0,0.5); color: white; border: none;
+  width: 36px; height: 36px; border-radius: 50%; font-size: 1.1rem;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  z-index: 10; transition: background 0.2s;
+}
+.speaker-modal-close:hover { background: rgba(0,0,0,0.8); }
+.speaker-card { cursor: pointer; }
+
+/* ── SPEAKERS ── */
+.speakers-section { background: var(--cream); }
+.speakers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 28px; }
+.speaker-card { background: var(--white); border-radius: 10px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: center; transition: transform 0.2s, box-shadow 0.2s; }
+.speaker-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.13); }
+.speaker-photo { width: 100%; aspect-ratio: 1/1; object-fit: cover; background: var(--navy); display: block; }
+.speaker-photo-placeholder { width: 100%; aspect-ratio: 1/1; background: linear-gradient(135deg, var(--navy) 0%, #1d3a50 100%); display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+.speaker-info { padding: 18px 16px 20px; }
+.speaker-name { font-family: 'Oswald', sans-serif; font-size: 1rem; letter-spacing: 1px; text-transform: uppercase; color: var(--navy); margin-bottom: 4px; }
+.speaker-title { font-size: 0.78rem; color: var(--teal2); margin-bottom: 10px; font-weight: 600; }
+.speaker-topic { display: inline-block; background: var(--cream); border: 1px solid var(--tan); border-radius: 20px; padding: 3px 12px; font-size: 0.72rem; color: #666; margin-bottom: 12px; }
+.speaker-bio { font-size: 0.82rem; color: #666; line-height: 1.6; text-align: left; }
+.speakers-note { text-align: center; background: var(--navy); border-radius: 8px; padding: 40px 32px; max-width: 640px; margin: 0 auto; }
+.speakers-note h3 { font-family: 'Oswald', sans-serif; font-size: 1.3rem; letter-spacing: 1px; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+.speakers-note p { color: #ccc; font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px; }
+.speakers-follow { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+
+/* ── TICKETS ── */
+.tickets-section { background: var(--white); }
+.tickets-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; max-width: 800px; margin: 0 auto 40px; }
+.ticket-card { border-radius: 8px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); text-align: center; transition: transform 0.2s; }
+.ticket-card:hover { transform: translateY(-4px); }
+.ticket-header { background: var(--navy); padding: 20px 16px; }
+.ticket-header h3 { font-family: 'Oswald', sans-serif; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); margin-bottom: 8px; }
+.ticket-price { font-family: 'Oswald', sans-serif; font-size: 2.2rem; font-weight: 700; color: var(--white); }
+.ticket-price span { font-size: 1rem; color: #aaa; }
+.ticket-body { background: var(--cream); padding: 20px 16px; }
+.ticket-body ul { list-style: none; font-size: 0.85rem; color: #555; }
+.ticket-body ul li { padding: 5px 0; border-bottom: 1px solid #ddd; }
+.ticket-body ul li:last-child { border-bottom: none; }
+.ticket-body ul li::before { content: "✓ "; color: var(--teal); font-weight: bold; }
+.ticket-featured .ticket-header { background: var(--teal); }
+.ticket-featured .ticket-header h3 { color: var(--white); }
+.ticket-featured .ticket-price { color: var(--white); }
+.tickets-note { text-align: center; font-size: 0.85rem; color: #888; font-family: 'Lora', serif; font-style: italic; }
+
+/* ── VENDOR CTA ── */
+.vendor-cta { background: var(--navy); border: 1px solid rgba(42,184,176,0.3); border-radius: 8px; padding: 28px 32px; max-width: 680px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.vendor-cta-text h3 { font-family: 'Oswald', sans-serif; font-size: 1.1rem; letter-spacing: 1px; text-transform: uppercase; color: var(--teal); margin-bottom: 6px; }
+.vendor-cta-text p { font-size: 0.88rem; color: #aaa; line-height: 1.5; }
+
+/* ── VENUE ── */
+.venue-section { background: var(--tan); }
+.venue-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.venue-info h3 { font-family: 'Oswald', sans-serif; font-size: 1.6rem; text-transform: uppercase; letter-spacing: 1px; color: var(--navy); margin-bottom: 20px; }
+.venue-detail { display: flex; gap: 14px; margin-bottom: 16px; align-items: flex-start; }
+.venue-detail .icon { font-size: 1.3rem; min-width: 28px; }
+.venue-detail div { font-size: 0.92rem; color: var(--text); line-height: 1.6; }
+.venue-detail strong { display: block; color: var(--navy); font-family: 'Oswald', sans-serif; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 2px; }
+.venue-map { border-radius: 10px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.15); background: var(--navy); height: 320px; display: flex; align-items: center; justify-content: center; }
+.venue-map iframe { width: 100%; height: 100%; border: none; }
+
+/* ── SPONSORS ── */
+.sponsors-section { background: var(--navy2); }
+.sponsors-section .section-title { color: var(--white); }
+.sponsors-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 900px; margin: 0 auto 40px; }
+.sponsor-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(42,184,176,0.2); border-radius: 8px; padding: 20px 28px; text-align: center; min-width: 140px; transition: background 0.2s; }
+.sponsor-card:hover { background: rgba(42,184,176,0.1); }
+.sponsor-card img { width: 100px; height: 60px; object-fit: contain; display: block; margin: 0 auto 10px; opacity: 0.9; border-radius: 4px; }
+.sponsor-card:hover img { opacity: 1; }
+.sponsor-card .sponsor-name { font-family: 'Oswald', sans-serif; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; color: var(--white); display: block; margin-bottom: 4px; }
+.sponsor-card .sponsor-tag { font-size: 0.72rem; color: #888; }
+.sponsor-become { text-align: center; margin-top: 16px; }
+.sponsor-become p { color: #888; font-size: 0.88rem; margin-bottom: 14px; }
+
+/* ── CONTACT ── */
+.contact-section { background: var(--cream); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; max-width: 800px; margin: 0 auto; }
+.contact-item { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 24px; }
+.contact-icon { width: 44px; height: 44px; border-radius: 50%; background: var(--teal); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+.contact-item h4 { font-family: 'Oswald', sans-serif; font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); margin-bottom: 4px; }
+.contact-item p { font-size: 0.92rem; color: var(--text); line-height: 1.5; }
+.contact-item a { color: var(--navy); text-decoration: none; }
+.contact-item a:hover { color: var(--teal); }
+.social-buttons { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+.social-btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 18px; border-radius: 4px; font-family: 'Oswald', sans-serif; font-size: 0.78rem; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; transition: opacity 0.2s; }
+.social-btn:hover { opacity: 0.85; }
+.social-fb { background: #1877f2; color: white; }
+
+/* ── FOOTER ── */
+footer { background: var(--navy2); border-top: 4px solid var(--teal); padding: 40px 24px 24px; text-align: center; }
+.footer-logo-text { font-family: 'Oswald', sans-serif; font-size: 1.2rem; letter-spacing: 2px; text-transform: uppercase; color: var(--white); margin-bottom: 8px; }
+.footer-logo-text span { color: var(--teal); }
+.footer-tagline { font-family: 'Lora', serif; font-style: italic; font-size: 0.9rem; color: #888; margin-bottom: 24px; }
+.footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 24px; }
+.footer-links a { font-family: 'Oswald', sans-serif; font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase; color: #777; text-decoration: none; }
+.footer-links a:hover { color: var(--teal); }
+.footer-copy { font-size: 0.75rem; color: #555; }
+
+/* ── HAMBURGER ── */
+.nav-hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; width: 40px; height: 40px; cursor: pointer; background: none; border: none; gap: 5px; padding: 4px; }
+.nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: transform 0.25s, opacity 0.25s; }
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav { padding: 0 16px; }
+  .nav-hamburger { display: flex; }
+  .nav-links { display: none; flex-direction: column; gap: 0; position: absolute; top: 64px; left: 0; right: 0; background: var(--navy2); border-bottom: 3px solid var(--teal); padding: 8px 0; list-style: none; }
+  .nav-links.open { display: flex; }
+  .nav-links li a { display: block; padding: 14px 24px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .nav-links li:last-child a { border-bottom: none; }
+  .nav-cta { margin: 8px 16px 4px; border-radius: 4px; display: block; text-align: center; }
+  .about-grid, .schedule-grid, .venue-grid, .contact-grid { grid-template-columns: 1fr; }
+  .hero-date-bar { flex-direction: column; }
+  .hero-date-item { border-right: none; border-bottom: 1px solid var(--teal); }
+  .hero-date-item:last-child { border-bottom: none; }
+  .stats-bar { gap: 0; }
+  .stat-item { padding: 8px 20px; }
+  .hero-countdown { gap: 0; }
+  .countdown-num { font-size: 1.6rem; }
+  .countdown-unit { padding: 10px 12px; }
+  .vendor-cta { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <img src="/assets/okhr-logo-cropped.jpg" alt="OKHR" style="width:38px;height:38px;border-radius:50%;object-fit:cover;background:white;margin-right:8px;">
+    Oklahoma <span style="margin:0 4px;">Homestead</span> Rendezvous
+  </div>
+  <button class="nav-hamburger" id="navToggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#expect">Experience</a></li>
+    <li><a href="#schedule">Schedule</a></li>
+    <li><a href="#tickets">Tickets</a></li>
+    <li><a href="#venue">Venue</a></li>
+    <li><a href="#sponsors">Sponsors</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#tickets" class="nav-cta">Get Tickets</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-logo">
+      <img src="/assets/okhr-logo-cropped.jpg" alt="Oklahoma Homestead Rendezvous" style="width:100%;height:100%;object-fit:contain;border-radius:50%;">
+    </div>
+    <div class="hero-eyebrow">Bringing the Past to the Present, for the Future</div>
+    <h1>Oklahoma Homestead<br><span>Rendezvous</span></h1>
+    <p class="hero-tagline">"Come Meet Your People — Connect. Share. Belong."</p>
+    <div class="hero-date-bar">
+      <div class="hero-date-item"><span class="label">Date</span><span class="value">Sept 25–26, 2026</span></div>
+      <div class="hero-date-item"><span class="label">Location</span><span class="value">McAlester, Oklahoma</span></div>
+      <div class="hero-date-item"><span class="label">Admission</span><span class="value">From $15/Day</span></div>
+    </div>
+    <div class="countdown-eyebrow">Event Begins In</div>
+    <div class="hero-countdown">
+      <div class="countdown-unit"><span class="countdown-num" id="cd-days">--</span><span class="countdown-label">Days</span></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-hours">--</span><span class="countdown-label">Hours</span></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-min">--</span><span class="countdown-label">Minutes</span></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-sec">--</span><span class="countdown-label">Seconds</span></div>
+    </div>
+    <div class="hero-buttons">
+      <a href="#tickets" class="btn btn-primary">🎟 Get Your Tickets</a>
+      <a href="#about" class="btn btn-outline">Learn More</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item"><span class="stat-num">2</span><span class="stat-label">Days</span></div>
+  <div class="stat-item"><span class="stat-num">Dynamic</span><span class="stat-label">Speakers</span></div>
+  <div class="stat-item"><span class="stat-num">Live</span><span class="stat-label">Demonstrations</span></div>
+  <div class="stat-item"><span class="stat-num">100+</span><span class="stat-label">Vendors & Exhibitors</span></div>
+  <div class="stat-item"><span class="stat-num">Free</span><span class="stat-label">Kids 5 & Under</span></div>
+</div>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="section-inner">
+    <div class="section-eyebrow">Why We Gather</div>
+    <h2 class="section-title">Some People Still Know How to Live</h2>
+    <div class="teal-line"></div>
+    <div class="hook-questions">
+      <p>Have you always wanted to <strong>grow your own food</strong> but didn't know where to start?</p>
+      <p>Are you looking for people who understand <strong>self-sufficiency, real skills, and community</strong>?</p>
+      <p>Do you feel like something important has been <strong>lost — and is worth recovering</strong>?</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>We are the pioneers of the homesteading lifestyle and it is our job to provide the information necessary to keep the homesteading community growing.</p>
+        <p>At Oklahoma Homestead Rendezvous, we are dedicated to creating a community of like-minded people that want to learn and teach skills to create a self-sustainable lifestyle both on and off grid.</p>
+        <p>Our rendezvous aims to give people the tools and education to create an alternative lifestyle, profit from their hard work, and to be successful at self-sufficiency.</p>
+        <a href="#tickets" class="btn btn-primary" style="margin-top:8px;">Claim Your Spot</a>
+      </div>
+      <div class="about-quote">
+        <blockquote>"Honor the Past. Live the Present. Inspire the Future."</blockquote>
+        <cite>— Oklahoma Homestead Rendezvous</cite>
+        <div style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(42,184,176,0.3);">
+          <blockquote style="font-size:1rem;">"Come to Learn. Stay to Connect. Leave Inspired."</blockquote>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT TO EXPECT -->
+<section class="expect-section" id="expect">
+  <div class="section-inner">
+    <div class="section-eyebrow">The Experience</div>
+    <h2 class="section-title">What You'll Find Here</h2>
+    <div class="teal-line"></div>
+    <p class="section-sub">Two full days of everything the homesteading community does best — learning, doing, connecting, and celebrating the life most people never find.</p>
+    <div class="expect-grid">
+      <div class="expect-card"><span class="expect-icon">🎤</span><h3>Dynamic Speakers</h3><p>Real practitioners sharing real knowledge. Experts in homesteading, self-sufficiency, food production, and community resilience.</p></div>
+      <div class="expect-card"><span class="expect-icon">🔨</span><h3>Skilled Demonstrations</h3><p>Watch — then try it yourself. Hands-on demos covering traditional skills, modern homestead techniques, and practical craftsmanship.</p></div>
+      <div class="expect-card"><span class="expect-icon">💬</span><h3>Real Talk Sessions</h3><p>No filters, no fluff. Candid conversations about what it actually takes to build a self-sufficient life — the successes and the hard lessons.</p></div>
+      <div class="expect-card"><span class="expect-icon">🏪</span><h3>Vendors & Marketplace</h3><p>Discover tools, seeds, livestock supplies, homestead goods, and local makers. Shop from people who actually use what they sell.</p></div>
+      <div class="expect-card"><span class="expect-icon">🎁</span><h3>Games & Giveaways</h3><p>Fun for the whole family. Activities, competitions, prizes, and the kind of atmosphere that makes this more than just a conference.</p></div>
+      <div class="expect-card"><span class="expect-icon">🤝</span><h3>Your People</h3><p>Meet the community you've been looking for. Families, farmers, homesteaders, and self-reliance seekers who get it — and are building it.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="schedule-section" id="schedule">
+  <div class="section-inner">
+    <div class="section-eyebrow">Event Schedule</div>
+    <h2 class="section-title">Two Days. Fully Loaded.</h2>
+    <div class="teal-line" style="background:var(--teal);"></div>
+    <p class="section-sub">Full schedule announced closer to the event. Follow us on Facebook for speaker announcements and session updates.</p>
+    <div class="schedule-grid">
+      <div class="schedule-day">
+        <div class="schedule-day-header"><div><h3>Friday</h3><div class="day-date">September 25, 2026</div></div></div>
+        <div class="schedule-items">
+          <div class="schedule-item"><span class="schedule-time">8:00 AM</span><div class="schedule-desc"><strong>Gates Open</strong>Vendor hall opens, registration check-in begins</div></div>
+          <div class="schedule-item"><span class="schedule-time">9:00 AM</span><div class="schedule-desc"><strong>Opening Session</strong>Welcome & keynote speaker</div></div>
+          <div class="schedule-item"><span class="schedule-time">10:30 AM</span><div class="schedule-desc"><strong>Demonstrations Begin</strong>Skilled demos across multiple stations</div></div>
+          <div class="schedule-item"><span class="schedule-time">12:00 PM</span><div class="schedule-desc"><strong>Lunch Break</strong>Food vendors on-site</div></div>
+          <div class="schedule-item"><span class="schedule-time">1:00 PM</span><div class="schedule-desc"><strong>Afternoon Sessions</strong>Speakers, real talk panels, workshops</div></div>
+          <div class="schedule-item"><span class="schedule-time">5:00 PM</span><div class="schedule-desc"><strong>Day 1 Close</strong>Networking & vendor browsing</div></div>
+        </div>
+      </div>
+      <div class="schedule-day">
+        <div class="schedule-day-header"><div><h3>Saturday</h3><div class="day-date">September 26, 2026</div></div></div>
+        <div class="schedule-items">
+          <div class="schedule-item"><span class="schedule-time">8:00 AM</span><div class="schedule-desc"><strong>Gates Open</strong>Full vendor hall & demonstrations</div></div>
+          <div class="schedule-item"><span class="schedule-time">9:00 AM</span><div class="schedule-desc"><strong>Morning Sessions</strong>Speakers & skill workshops continue</div></div>
+          <div class="schedule-item"><span class="schedule-time">11:00 AM</span><div class="schedule-desc"><strong>Real Talk Sessions</strong>Candid community conversations</div></div>
+          <div class="schedule-item"><span class="schedule-time">12:00 PM</span><div class="schedule-desc"><strong>Lunch & Games</strong>Family activities & giveaways</div></div>
+          <div class="schedule-item"><span class="schedule-time">1:30 PM</span><div class="schedule-desc"><strong>Afternoon Demos</strong>Hands-on learning continues</div></div>
+          <div class="schedule-item"><span class="schedule-time">4:00 PM</span><div class="schedule-desc"><strong>Closing Session</strong>Final speaker & community send-off</div></div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:32px;">
+      <a href="https://www.facebook.com/share/1EaZ6VeVap/?mibextid=wwXIfr" target="_blank" class="btn btn-primary">Follow for Full Schedule Updates</a>
+    </div>
+  </div>
+</section>
+
+<!-- SPEAKERS -->
+<section class="speakers-section" id="speakers">
+  <div class="section-inner">
+    <div class="section-eyebrow">Who You'll Hear From</div>
+    <h2 class="section-title">Speaker Lineup</h2>
+    <div class="teal-line"></div>
+    <div id="speakers-container">
+      <div class="speakers-note">
+        <h3>🎤 Speakers Being Announced</h3>
+        <p>Dynamic speakers from across the homesteading, self-sufficiency, and regenerative agriculture community are being confirmed. Speaker announcements are rolling out on Facebook — follow the page to be the first to know.</p>
+        <div class="speakers-follow">
+          <a href="https://www.facebook.com/share/1EaZ6VeVap/?mibextid=wwXIfr" target="_blank" class="btn btn-primary">Follow on Facebook</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKETS -->
+<section class="tickets-section" id="tickets">
+  <div class="section-inner">
+    <div class="section-eyebrow">Admission</div>
+    <h2 class="section-title">Get Your Tickets</h2>
+    <div class="teal-line"></div>
+    <p class="section-sub">Simple, affordable pricing. Pay per day or come for both — the full experience is worth every bit of it.</p>
+    <div class="tickets-grid">
+      <div class="ticket-card">
+        <div class="ticket-header"><h3>Child</h3><div class="ticket-price">$5 <span>/ day</span></div></div>
+        <div class="ticket-body"><ul><li>Ages 12 & under</li><li>Full event access</li><li>Games & activities</li><li>Giveaway eligible</li></ul></div>
+      </div>
+      <div class="ticket-card ticket-featured">
+        <div class="ticket-header"><h3>⭐ Adult</h3><div class="ticket-price">$15 <span>/ day</span></div></div>
+        <div class="ticket-body"><ul><li>All speakers & sessions</li><li>Live demonstrations</li><li>Vendor marketplace</li><li>Real talk sessions</li><li>Games & giveaways</li></ul></div>
+      </div>
+      <div class="ticket-card">
+        <div class="ticket-header"><h3>Little Ones</h3><div class="ticket-price">FREE</div></div>
+        <div class="ticket-body"><ul><li>Ages 5 & under</li><li>Free admission</li><li>Must be with adult</li><li>Full event access</li></ul></div>
+      </div>
+    </div>
+    <div class="vendor-cta" style="margin-top:40px;">
+      <div class="vendor-cta-text">
+        <h3>🏪 Vendor & Exhibitor Inquiry</h3>
+        <p>Reserve your booth at the Oklahoma Homestead Rendezvous. Space is limited — reach out now to secure your spot.</p>
+      </div>
+      <a href="mailto:okhomesteadrendezvous@yahoo.com?subject=Vendor%20Inquiry%20%E2%80%94%20Oklahoma%20Homestead%20Rendezvous" class="btn btn-primary">Apply to Vend</a>
+    </div>
+    <!-- QR + Buy Block -->
+    <div style="text-align:center;margin:36px auto 0;max-width:340px;background:var(--cream);border:2px solid var(--teal);border-radius:10px;padding:28px 24px;">
+      <div style="font-family:'Oswald',sans-serif;font-size:0.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:12px;">Scan to Buy Tickets</div>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https%3A%2F%2Fevents.ticketleap.com%2Ftickets%2Foklahomahomesteadrendezvous%2Foklahoma-homestead-rendezvous&color=1a2744&bgcolor=f9f3e3" alt="QR Code — Buy Tickets" style="width:180px;height:180px;display:block;margin:0 auto 16px;border-radius:4px;">
+      <a href="https://events.ticketleap.com/tickets/oklahomahomesteadrendezvous/oklahoma-homestead-rendezvous" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%;display:block;text-align:center;">🎟 Buy Tickets Now</a>
+      <p style="font-size:0.75rem;color:#888;margin-top:10px;">Secure checkout via TicketLeap</p>
+    </div>
+    <p class="tickets-note" style="margin-top:20px;">Tickets also available at the gate. For group rates, call 801-949-8198.</p>
+    <div style="text-align:center;margin-top:28px;">
+      <a href="https://www.facebook.com/share/1EaZ6VeVap/?mibextid=wwXIfr" target="_blank" class="btn btn-primary" style="margin-right:12px;">Follow for Ticket Updates</a>
+      <a href="tel:8019498198" class="btn btn-navy">📞 Call 801-949-8198</a>
+    </div>
+  </div>
+</section>
+
+<!-- VENUE -->
+<section class="venue-section" id="venue">
+  <div class="section-inner">
+    <div class="section-eyebrow">Where We Meet</div>
+    <h2 class="section-title">Venue & Location</h2>
+    <div class="teal-line"></div>
+    <div class="venue-grid">
+      <div class="venue-info">
+        <h3>Southeast Expo Center</h3>
+        <div class="venue-detail"><span class="icon">📍</span><div><strong>Address</strong>Southeast Expo Center<br>4500 W US-270<br>McAlester, OK 74501</div></div>
+        <div class="venue-detail"><span class="icon">📅</span><div><strong>Event Dates</strong>Friday, September 25, 2026<br>Saturday, September 26, 2026<br>Gates open 8:00 AM both days</div></div>
+        <div class="venue-detail"><span class="icon">🚗</span><div><strong>Getting There</strong>Located on US-270 in McAlester, Oklahoma.<br>Free parking on-site.</div></div>
+        <div class="venue-detail"><span class="icon">📞</span><div><strong>Questions?</strong><a href="tel:8019498198">801-949-8198</a><br><a href="mailto:okhomesteadrendezvous@yahoo.com">okhomesteadrendezvous@yahoo.com</a></div></div>
+        <a href="https://maps.google.com/?q=4500+W+US-270+McAlester+OK+74501" target="_blank" class="btn btn-primary" style="margin-top:12px;">Get Directions</a>
+      </div>
+      <div class="venue-map">
+        <iframe src="https://maps.google.com/maps?q=Southeast+Expo+Center,+4500+W+US-270,+McAlester,+OK+74501&output=embed&z=15" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPONSORS -->
+<section class="sponsors-section" id="sponsors">
+  <div class="section-inner">
+    <div class="section-eyebrow">Our Partners</div>
+    <h2 class="section-title">Thank You to Our Sponsors</h2>
+    <div class="teal-line" style="background:var(--teal);"></div>
+    <p class="section-sub" style="color:#aaa;">These companies believe in the homesteading community and make this event possible.</p>
+    <div class="sponsors-grid" id="sponsors-grid"></div>
+    <div class="sponsor-become">
+      <p>Interested in sponsoring the Oklahoma Homestead Rendezvous?</p>
+      <a href="mailto:okhomesteadrendezvous@yahoo.com" class="btn btn-primary">Become a Sponsor</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="section-inner">
+    <div class="section-eyebrow">Get In Touch</div>
+    <h2 class="section-title">We'd Love to Hear from You</h2>
+    <div class="teal-line"></div>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-item"><div class="contact-icon">📞</div><div><h4>Phone</h4><p><a href="tel:8019498198">801-949-8198</a></p><p style="font-size:0.8rem;color:#888;">Monday–Friday, 9 AM–5 PM</p></div></div>
+        <div class="contact-item"><div class="contact-icon">✉️</div><div><h4>Email</h4><p><a href="mailto:okhomesteadrendezvous@yahoo.com">okhomesteadrendezvous@yahoo.com</a></p></div></div>
+        <div class="contact-item"><div class="contact-icon">📍</div><div><h4>Event Location</h4><p>Southeast Expo Center<br>4500 W US-270, McAlester, OK 74501</p></div></div>
+      </div>
+      <div>
+        <div class="contact-item"><div class="contact-icon">📱</div><div><h4>Follow for Updates</h4><p>Speaker announcements, schedule updates, and event news.</p><div class="social-buttons" style="margin-top:12px;"><a href="https://www.facebook.com/share/1EaZ6VeVap/?mibextid=wwXIfr" target="_blank" class="social-btn social-fb">Facebook Page</a></div></div></div>
+        <div class="contact-item" style="margin-top:12px;"><div class="contact-icon">📸</div><div><h4>Instagram</h4><p><a href="https://www.instagram.com/oklahomahomesteadrendezvous" target="_blank" rel="noopener">@oklahomahomesteadrendezvous</a></p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo-text">Oklahoma <span>Homestead</span> Rendezvous</div>
+  <div class="footer-tagline">Bringing the Past to the Present, for the Future · Sept 25–26, 2026 · McAlester, OK</div>
+  <div class="footer-links">
+    <a href="#about">About</a><a href="#expect">Experience</a><a href="#schedule">Schedule</a>
+    <a href="#tickets">Tickets</a><a href="#venue">Venue</a><a href="#sponsors">Sponsors</a>
+    <a href="#contact">Contact</a>
+    <a href="https://www.facebook.com/share/1EaZ6VeVap/?mibextid=wwXIfr" target="_blank">Facebook</a>
+  </div>
+  <div class="footer-copy">© 2026 Oklahoma Homestead Rendezvous · Honor the Past. Live the Present. Inspire the Future.</div>
+</footer>
+
+<!-- SPEAKER MODAL -->
+<div class="speaker-modal-overlay" id="speakerModal">
+  <div class="speaker-modal">
+    <button class="speaker-modal-close" id="modalClose">✕</button>
+    <div id="modalPhoto"></div>
+    <div class="speaker-modal-body">
+      <div class="speaker-modal-name" id="modalName"></div>
+      <div class="speaker-modal-title" id="modalTitle"></div>
+      <span class="speaker-modal-topic" id="modalTopic"></span>
+      <div id="modalBio"></div>
+    </div>
+  </div>
+</div>
+
+<!-- SITE DATA LOADER -->
+<script>
+(async function loadSiteData() {
+  let data;
+  try { const res = await fetch('/site-data.json?v=' + Date.now()); data = await res.json(); } catch(e) { return; }
+  if (data.ticket_url) {
+    document.querySelectorAll('a[href="#tickets"].btn-primary, a.nav-cta[href="#tickets"]').forEach(el => { el.href = data.ticket_url; el.target = '_blank'; el.rel = 'noopener'; });
+  }
+  const container = document.getElementById('speakers-container');
+  if (container && data.speakers && data.speakers.length > 0) {
+    const grid = document.createElement('div'); grid.className = 'speakers-grid';
+    data.speakers.forEach(s => {
+      const photoHTML = s.photo ? `<img class="speaker-photo" src="${s.photo}" alt="${s.name}" loading="lazy">` : `<div class="speaker-photo-placeholder">🎤</div>`;
+      grid.innerHTML += `<div class="speaker-card" data-name="${s.name}" data-title="${s.title||''}" data-topic="${s.topic||''}" data-bio="${(s.bio||'').replace(/"/g,'&quot;')}" data-photo="${s.photo||''}">${photoHTML}<div class="speaker-info"><div class="speaker-name">${s.name}</div>${s.title?`<div class="speaker-title">${s.title}</div>`:''}${s.topic?`<span class="speaker-topic">${s.topic}</span>`:''}${s.bio?`<p class="speaker-bio">${s.bio}</p>`:''}<div style="margin-top:10px;font-family:'Oswald',sans-serif;font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--teal);">View Bio →</div></div></div>`;
+    });
+    container.innerHTML = ''; container.appendChild(grid);
+    const follow = document.createElement('div'); follow.style = 'text-align:center;margin-top:36px;';
+    follow.innerHTML = `<a href="https://www.facebook.com/share/1EaZ6VeVap/?mibextid=wwXIfr" target="_blank" class="btn btn-primary">More Speakers Being Announced — Follow on Facebook</a>`;
+    container.appendChild(follow);
+  }
+  const sponsorsGrid = document.getElementById('sponsors-grid');
+  if (sponsorsGrid && data.sponsors && data.sponsors.length > 0) {
+    sponsorsGrid.innerHTML = '';
+    data.sponsors.forEach(s => {
+      const logoHTML = s.logo ? `<img src="${s.logo}" alt="${s.name} logo">` : '';
+      const wrap = s.website ? `<a href="${s.website}" target="_blank" rel="noopener" style="text-decoration:none;">` : '';
+      const wrapClose = s.website ? '</a>' : '';
+      sponsorsGrid.innerHTML += `${wrap}<div class="sponsor-card">${logoHTML}<span class="sponsor-name">${s.name}</span><span class="sponsor-tag">${s.tag||''}</span></div>${wrapClose}`;
+    });
+  }
+})();
+</script>
+
+<script>
+// Speaker Modal
+const modal = document.getElementById('speakerModal');
+const modalClose = document.getElementById('modalClose');
+document.getElementById('speakers-container').addEventListener('click', e => {
+  const card = e.target.closest('.speaker-card');
+  if (!card) return;
+  const { name, title, topic, bio, photo } = card.dataset;
+  document.getElementById('modalName').textContent = name;
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalTopic').textContent = topic;
+  document.getElementById('modalTopic').style.display = topic ? 'inline-block' : 'none';
+  document.getElementById('modalPhoto').innerHTML = photo
+    ? `<img class="speaker-modal-photo" src="${photo}" alt="${name}">`
+    : `<div class="speaker-modal-photo-placeholder">🎤</div>`;
+  const bioEl = document.getElementById('modalBio');
+  bioEl.innerHTML = bio
+    ? `<p class="speaker-modal-bio">${bio}</p>`
+    : `<p class="speaker-modal-bio-placeholder">"Full bio coming soon — follow us on Facebook for speaker announcements."</p>`;
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+});
+modalClose.addEventListener('click', closeModal);
+modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+function closeModal() { modal.classList.remove('open'); document.body.style.overflow = ''; }
+
+// Hamburger
+const toggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+toggle.addEventListener('click', () => { toggle.classList.toggle('open'); navLinks.classList.toggle('open'); });
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { toggle.classList.remove('open'); navLinks.classList.remove('open'); }));
+
+// Countdown
+(function() {
+  const target = new Date('2026-09-25T08:00:00-05:00').getTime();
+  function tick() {
+    const diff = target - Date.now();
+    if (diff <= 0) { ['days','hours','min','sec'].forEach(id => document.getElementById('cd-'+id).textContent='0'); return; }
+    document.getElementById('cd-days').textContent  = String(Math.floor(diff/86400000));
+    document.getElementById('cd-hours').textContent = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
+    document.getElementById('cd-min').textContent   = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+    document.getElementById('cd-sec').textContent   = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+  }
+  tick(); setInterval(tick, 1000);
+})();
+</script>
+
+</body>
+</html>
