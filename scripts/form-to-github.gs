@@ -2,140 +2,210 @@
  * Oklahoma Homestead Rendezvous — Form → GitHub Auto-Deploy
  *
  * SETUP:
- * 1. Open your Google Form → ⋮ → Script editor
- * 2. Paste this entire file
- * 3. Set your secrets: Extensions → Apps Script → Project Settings → Script Properties
- *    GITHUB_TOKEN        = your GitHub personal access token (needs repo scope)
+ * 1. Open your Google Form → Extensions → Apps Script
+ * 2. Paste this entire file, save, run setupTrigger() once
+ *
+ * Script Properties required (Project Settings → Script Properties):
+ *    GITHUB_TOKEN        = GitHub personal access token (repo scope)
  *    GITHUB_OWNER        = HomesteadMediaGroup
  *    GITHUB_REPO         = oklahoma-homestead-rendezvous
  *    GITHUB_FILE         = site-data.json
  *    NETLIFY_BUILD_HOOK  = https://api.netlify.com/build_hooks/6a7a786ba453163d941311d8
- * 4. Run setupTrigger() once to install the form-submit trigger
  */
 
-// ── COLUMN MAP ──────────────────────────────────────────────────────────────
-// Update these numbers to match your Google Sheet column order (1-indexed).
-// Open the Sheet, count from left: A=1, B=2, C=3 ...
+// ── EXACT COLUMN MAP (1-indexed, based on actual sheet headers) ─────────────
 const COL = {
   timestamp:        1,
-  submitterName:    2,
-  submitterRole:    3,
-  submitterEmail:   4,
-  submitterPhone:   5,
+  email:            2,
+  fullName:         3,
+  role:             4,
+  email2:           5,
+  phone:            6,
+  logoLink:         7,
+  logoNote:         8,
+  tagline:          9,
+  ticketUrl:        10,
+  customDomain:     11,
+  eventPhotos:      12,
+  venuePhotos:      13,
+  photoNotes:       14,
 
-  // Speaker 1
-  sp1Name:          6,
-  sp1Farm:          7,
-  sp1Topic:         8,
-  sp1Bio:           9,
-  sp1Photo:         10,
-  sp1Link:          11,
+  sp1Name:          15,
+  sp1Title:         16,
+  sp1Topic:         17,
+  sp1Bio:           18,
+  sp1Link:          19,
+  sp1Photo:         20,
 
-  // Speaker 2
-  sp2Name:          12,
-  sp2Farm:          13,
-  sp2Topic:         14,
-  sp2Bio:           15,
-  sp2Photo:         16,
-  sp2Link:          17,
+  sp2Name:          21,
+  sp2Title:         22,
+  sp2Topic:         23,
+  sp2Bio:           24,
+  sp2Link:          25,
+  sp2Photo:         26,
 
-  // Speaker 3
-  sp3Name:          18,
-  sp3Farm:          19,
-  sp3Topic:         20,
-  sp3Bio:           21,
-  sp3Photo:         22,
-  sp3Link:          23,
+  sp3Name:          27,
+  sp3Title:         28,
+  sp3Topic:         29,
+  sp3Bio:           30,
+  sp3Link:          31,
+  sp3Photo:         32,
 
-  // Speaker 4
-  sp4Name:          24,
-  sp4Farm:          25,
-  sp4Topic:         26,
-  sp4Bio:           27,
-  sp4Photo:         28,
-  sp4Link:          29,
+  sp4Name:          33,
+  sp4Title:         34,
+  sp4Topic:         35,
+  sp4Bio:           36,
+  sp4Link:          37,
+  sp4Photo:         38,
 
-  // Sponsor 1
-  sp1SponsorName:   30,
-  sp1SponsorTag:    31,
-  sp1SponsorLogo:   32,
-  sp1SponsorSite:   33,
+  spon1Name:        39,
+  spon1Tag:         40,
+  spon1Level:       41,
+  spon1Site:        42,
+  spon1Logo:        43,
 
-  // Sponsor 2
-  sp2SponsorName:   34,
-  sp2SponsorTag:    35,
-  sp2SponsorLogo:   36,
-  sp2SponsorSite:   37,
+  spon2Name:        44,
+  spon2Tag:         45,
+  spon2Level:       46,
+  spon2Site:        47,
+  spon2Logo:        48,
 
-  // Ticket URL
-  ticketUrl:        38,
+  spon3Name:        49,
+  spon3Tag:         50,
+  spon3Level:       51,
+  spon3Site:        52,
+  spon3Logo:        53,
+
+  spon4Name:        54,
+  spon4Tag:         55,
+  spon4Level:       56,
+  spon4Site:        57,
+  spon4Logo:        58,
+
+  spon5Name:        59,
+  spon5Tag:         60,
+  spon5Level:       61,
+  spon5Site:        62,
+  spon5Logo:        63,
+
+  spon6Name:        64,
+  spon6Tag:         65,
+  spon6Level:       66,
+  spon6Site:        67,
+  spon6Logo:        68,
+
+  facebook:         69,
+  instagram:        70,
+  tiktok:           71,
+  youtube:          72,
+  corrections:      73,
+  promoCopy:        74,
+  otherFiles:       75,
+  notes:            76
 };
 
 // ── HELPERS ─────────────────────────────────────────────────────────────────
-
-function driveThumb(rawUrl, size) {
-  if (!rawUrl) return '';
-  size = size || 'w400';
-  // Extract file ID from various Drive URL formats
-  var match = rawUrl.match(/\/d\/([a-zA-Z0-9_-]+)/) ||
-              rawUrl.match(/id=([a-zA-Z0-9_-]+)/);
-  if (!match) return rawUrl;
-  return 'https://drive.google.com/thumbnail?id=' + match[1] + '&sz=' + size;
-}
 
 function cell(row, col) {
   var v = row[col - 1];
   return v ? String(v).trim() : '';
 }
 
-function buildSpeaker(row, namCol, farmCol, topicCol, bioCol, photoCol, linkCol) {
-  var name = cell(row, namCol);
+function driveThumb(rawUrl, size) {
+  if (!rawUrl) return '';
+  size = size || 'w400';
+  var match = rawUrl.match(/\/d\/([a-zA-Z0-9_-]+)/) ||
+              rawUrl.match(/id=([a-zA-Z0-9_-]+)/);
+  if (!match) return rawUrl;
+  return 'https://drive.google.com/thumbnail?id=' + match[1] + '&sz=' + size;
+}
+
+function buildSpeaker(row, nameCol, titleCol, topicCol, bioCol, linkCol, photoCol) {
+  var name = cell(row, nameCol);
   if (!name) return null;
   return {
     name:  name,
-    title: cell(row, farmCol),
+    title: cell(row, titleCol),
     topic: cell(row, topicCol),
     bio:   cell(row, bioCol),
-    photo: driveThumb(cell(row, photoCol), 'w400'),
-    link:  cell(row, linkCol)
+    link:  cell(row, linkCol),
+    photo: driveThumb(cell(row, photoCol), 'w400')
   };
 }
 
-function buildSponsor(row, nameCol, tagCol, logoCol, siteCol) {
+function buildSponsor(row, nameCol, tagCol, levelCol, siteCol, logoCol) {
   var name = cell(row, nameCol);
   if (!name) return null;
   return {
     name:    name,
     tag:     cell(row, tagCol),
-    level:   'sponsor',
-    logo:    driveThumb(cell(row, logoCol), 'w300'),
-    website: cell(row, siteCol)
+    level:   cell(row, levelCol) || 'sponsor',
+    website: cell(row, siteCol),
+    logo:    driveThumb(cell(row, logoCol), 'w300')
   };
+}
+
+// Merge by name: update existing entry or append new one
+function mergeByName(existingArr, newItems) {
+  newItems.forEach(function(newItem) {
+    var idx = -1;
+    for (var i = 0; i < existingArr.length; i++) {
+      if (existingArr[i].name === newItem.name) { idx = i; break; }
+    }
+    // Only overwrite non-empty fields — preserve existing data if new field is blank
+    if (idx >= 0) {
+      Object.keys(newItem).forEach(function(k) {
+        if (newItem[k]) existingArr[idx][k] = newItem[k];
+      });
+    } else {
+      existingArr.push(newItem);
+    }
+  });
+  return existingArr;
 }
 
 // ── MAIN TRIGGER ────────────────────────────────────────────────────────────
 
 function onFormSubmit(e) {
   try {
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
+    // Read the latest row from the linked spreadsheet
+    var ss = SpreadsheetApp.openById(FormApp.getActiveForm().getId());
+    Logger.log('Using form-linked sheet approach');
+  } catch(ex) {
+    // Script is bound to the form — get linked sheet via form destination
+  }
+
+  try {
+    var form = FormApp.getActiveForm();
+    var destId = form.getDestinationId();
+    var sheet = SpreadsheetApp.openById(destId).getSheets()[0];
     var lastRow = sheet.getLastRow();
     var row = sheet.getRange(lastRow, 1, 1, sheet.getLastColumn()).getValues()[0];
 
-    // Build speakers array (skip empty entries)
-    var speakers = [
-      buildSpeaker(row, COL.sp1Name, COL.sp1Farm, COL.sp1Topic, COL.sp1Bio, COL.sp1Photo, COL.sp1Link),
-      buildSpeaker(row, COL.sp2Name, COL.sp2Farm, COL.sp2Topic, COL.sp2Bio, COL.sp2Photo, COL.sp2Link),
-      buildSpeaker(row, COL.sp3Name, COL.sp3Farm, COL.sp3Topic, COL.sp3Bio, COL.sp3Photo, COL.sp3Link),
-      buildSpeaker(row, COL.sp4Name, COL.sp4Farm, COL.sp4Topic, COL.sp4Bio, COL.sp4Photo, COL.sp4Link),
+    Logger.log('Processing row ' + lastRow + ' — name: ' + cell(row, COL.fullName));
+
+    // Build new speakers from this submission (skip blanks)
+    var newSpeakers = [
+      buildSpeaker(row, COL.sp1Name, COL.sp1Title, COL.sp1Topic, COL.sp1Bio, COL.sp1Link, COL.sp1Photo),
+      buildSpeaker(row, COL.sp2Name, COL.sp2Title, COL.sp2Topic, COL.sp2Bio, COL.sp2Link, COL.sp2Photo),
+      buildSpeaker(row, COL.sp3Name, COL.sp3Title, COL.sp3Topic, COL.sp3Bio, COL.sp3Link, COL.sp3Photo),
+      buildSpeaker(row, COL.sp4Name, COL.sp4Title, COL.sp4Topic, COL.sp4Bio, COL.sp4Link, COL.sp4Photo)
     ].filter(Boolean);
 
-    // Build sponsors array (skip empty entries)
-    var sponsors = [
-      buildSponsor(row, COL.sp1SponsorName, COL.sp1SponsorTag, COL.sp1SponsorLogo, COL.sp1SponsorSite),
-      buildSponsor(row, COL.sp2SponsorName, COL.sp2SponsorTag, COL.sp2SponsorLogo, COL.sp2SponsorSite),
+    // Build new sponsors from this submission (skip blanks)
+    var newSponsors = [
+      buildSponsor(row, COL.spon1Name, COL.spon1Tag, COL.spon1Level, COL.spon1Site, COL.spon1Logo),
+      buildSponsor(row, COL.spon2Name, COL.spon2Tag, COL.spon2Level, COL.spon2Site, COL.spon2Logo),
+      buildSponsor(row, COL.spon3Name, COL.spon3Tag, COL.spon3Level, COL.spon3Site, COL.spon3Logo),
+      buildSponsor(row, COL.spon4Name, COL.spon4Tag, COL.spon4Level, COL.spon4Site, COL.spon4Logo),
+      buildSponsor(row, COL.spon5Name, COL.spon5Tag, COL.spon5Level, COL.spon5Site, COL.spon5Logo),
+      buildSponsor(row, COL.spon6Name, COL.spon6Tag, COL.spon6Level, COL.spon6Site, COL.spon6Logo)
     ].filter(Boolean);
 
-    // Fetch current site-data.json from GitHub to preserve existing data
+    Logger.log('New speakers found: ' + newSpeakers.length);
+    Logger.log('New sponsors found: ' + newSponsors.length);
+
+    // Fetch current site-data.json from GitHub
     var props   = PropertiesService.getScriptProperties().getProperties();
     var owner   = props.GITHUB_OWNER;
     var repo    = props.GITHUB_REPO;
@@ -151,20 +221,24 @@ function onFormSubmit(e) {
     var existingData = JSON.parse(Utilities.newBlob(Utilities.base64Decode(current.content)).getDataAsString());
     var sha = current.sha;
 
-    // Merge: new submission overlays existing data; keep fields not in form
-    if (speakers.length > 0) existingData.speakers = speakers;
-    if (sponsors.length > 0) {
-      // Merge with existing sponsors by name (add new, update existing)
-      sponsors.forEach(function(newS) {
-        var idx = existingData.sponsors.findIndex(function(s) { return s.name === newS.name; });
-        if (idx >= 0) existingData.sponsors[idx] = newS;
-        else existingData.sponsors.push(newS);
-      });
+    // Merge speakers (add new, update existing by name, preserve unlisted)
+    if (newSpeakers.length > 0) {
+      existingData.speakers = mergeByName(existingData.speakers || [], newSpeakers);
     }
+
+    // Merge sponsors (add new, update existing by name, preserve unlisted)
+    if (newSponsors.length > 0) {
+      existingData.sponsors = mergeByName(existingData.sponsors || [], newSponsors);
+    }
+
+    // Update other fields only if provided
     var ticketUrl = cell(row, COL.ticketUrl);
     if (ticketUrl) existingData.ticket_url = ticketUrl;
 
-    // Push updated JSON back to GitHub
+    var logoLink = cell(row, COL.logoLink);
+    if (logoLink) existingData.logo_path = driveThumb(logoLink, 'w400');
+
+    // Push updated JSON to GitHub
     var newContent = Utilities.base64Encode(JSON.stringify(existingData, null, 2));
     var putResp = UrlFetchApp.fetch(apiBase, {
       method: 'PUT',
@@ -174,24 +248,25 @@ function onFormSubmit(e) {
         'Content-Type': 'application/json'
       },
       payload: JSON.stringify({
-        message: 'Auto-update site-data.json from form submission (' + new Date().toISOString() + ')',
+        message: 'Auto-update from form submission — ' + cell(row, COL.fullName) + ' (' + new Date().toISOString() + ')',
         content: newContent,
         sha: sha
       }),
       muteHttpExceptions: true
     });
 
-    var result = JSON.parse(putResp.getContentText());
-    Logger.log('GitHub push result: ' + putResp.getResponseCode());
-    if (putResp.getResponseCode() !== 200) {
-      Logger.log('Error: ' + JSON.stringify(result));
-    } else {
+    var code = putResp.getResponseCode();
+    Logger.log('GitHub push response: ' + code);
+
+    if (code === 200) {
       // Trigger Netlify redeploy
       var buildHook = props.NETLIFY_BUILD_HOOK;
       if (buildHook) {
         UrlFetchApp.fetch(buildHook, { method: 'POST', muteHttpExceptions: true });
-        Logger.log('Netlify build triggered.');
+        Logger.log('Netlify build triggered. Site will update in ~60 seconds.');
       }
+    } else {
+      Logger.log('GitHub error: ' + putResp.getContentText());
     }
 
   } catch(err) {
@@ -200,17 +275,15 @@ function onFormSubmit(e) {
 }
 
 // ── TRIGGER INSTALLER ───────────────────────────────────────────────────────
-// Run this function ONCE manually from the Apps Script editor to install
-// the form-submit trigger. You do NOT need to run it again.
+// Run this function ONCE from the Apps Script editor to install the trigger.
 
 function setupTrigger() {
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
-  // Remove any existing triggers first to avoid duplicates
+  var form = FormApp.getActiveForm();
   ScriptApp.getProjectTriggers().forEach(function(t) {
     if (t.getHandlerFunction() === 'onFormSubmit') ScriptApp.deleteTrigger(t);
   });
   ScriptApp.newTrigger('onFormSubmit')
-    .forSpreadsheet(ss)
+    .forForm(form)
     .onFormSubmit()
     .create();
   Logger.log('Trigger installed successfully.');
