@@ -101,7 +101,9 @@ const COL = {
   corrections:      73,
   promoCopy:        74,
   otherFiles:       75,
-  notes:            76
+  notes:            76,
+  removeSpeakers:   77,
+  removeSponsors:   78
 };
 
 // ── HELPERS ─────────────────────────────────────────────────────────────────
@@ -229,6 +231,26 @@ function onFormSubmit(e) {
     // Merge sponsors (add new, update existing by name, preserve unlisted)
     if (newSponsors.length > 0) {
       existingData.sponsors = mergeByName(existingData.sponsors || [], newSponsors);
+    }
+
+    // Remove speakers by name if requested
+    var removeSpeakersRaw = cell(row, COL.removeSpeakers);
+    if (removeSpeakersRaw) {
+      var removeNames = removeSpeakersRaw.split('\n').map(function(n) { return n.trim().toLowerCase(); }).filter(Boolean);
+      existingData.speakers = (existingData.speakers || []).filter(function(s) {
+        return removeNames.indexOf(s.name.toLowerCase()) === -1;
+      });
+      Logger.log('Removed speakers: ' + removeNames.join(', '));
+    }
+
+    // Remove sponsors by name if requested
+    var removeSponsorsRaw = cell(row, COL.removeSponsors);
+    if (removeSponsorsRaw) {
+      var removeSponsorNames = removeSponsorsRaw.split('\n').map(function(n) { return n.trim().toLowerCase(); }).filter(Boolean);
+      existingData.sponsors = (existingData.sponsors || []).filter(function(s) {
+        return removeSponsorNames.indexOf(s.name.toLowerCase()) === -1;
+      });
+      Logger.log('Removed sponsors: ' + removeSponsorNames.join(', '));
     }
 
     // Update other fields only if provided
