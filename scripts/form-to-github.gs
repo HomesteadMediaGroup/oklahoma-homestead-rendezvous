@@ -170,14 +170,6 @@ function mergeByName(existingArr, newItems) {
 
 function onFormSubmit(e) {
   try {
-    // Read the latest row from the linked spreadsheet
-    var ss = SpreadsheetApp.openById(FormApp.getActiveForm().getId());
-    Logger.log('Using form-linked sheet approach');
-  } catch(ex) {
-    // Script is bound to the form — get linked sheet via form destination
-  }
-
-  try {
     var form = FormApp.getActiveForm();
     var destId = form.getDestinationId();
     var sheet = SpreadsheetApp.openById(destId).getSheets()[0];
