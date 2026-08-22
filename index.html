@@ -663,7 +663,7 @@ footer { background: var(--navy2); border-top: 4px solid var(--teal); padding: 4
 <script>
 (async function loadSiteData() {
   let data;
-  try { const res = await fetch('/site-data.json?v=' + Date.now()); data = await res.json(); } catch(e) { return; }
+  try { const res = await fetch('https://raw.githubusercontent.com/HomesteadMediaGroup/oklahoma-homestead-rendezvous/main/site-data.json?v=' + Date.now()); data = await res.json(); } catch(e) { return; }
   if (data.ticket_url) {
     document.querySelectorAll('a[href="#tickets"].btn-primary, a.nav-cta[href="#tickets"]').forEach(el => { el.href = data.ticket_url; el.target = '_blank'; el.rel = 'noopener'; });
   }

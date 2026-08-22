@@ -10,7 +10,9 @@
  *    GITHUB_OWNER        = HomesteadMediaGroup
  *    GITHUB_REPO         = oklahoma-homestead-rendezvous
  *    GITHUB_FILE         = site-data.json
- *    NETLIFY_BUILD_HOOK  = https://api.netlify.com/build_hooks/6a7a786ba453163d941311d8
+ *
+ * NOTE: No build hook needed. site-data.json is fetched live from GitHub by the site.
+ *       Form submit → GitHub push → site updates on next page load automatically.
  */
 
 // ── EXACT COLUMN MAP (1-indexed, based on actual sheet headers) ─────────────
@@ -273,12 +275,7 @@ function onFormSubmit(e) {
     Logger.log('GitHub push response: ' + code);
 
     if (code === 200) {
-      // Trigger Netlify redeploy
-      var buildHook = props.NETLIFY_BUILD_HOOK;
-      if (buildHook) {
-        UrlFetchApp.fetch(buildHook, { method: 'POST', muteHttpExceptions: true });
-        Logger.log('Netlify build triggered. Site will update in ~60 seconds.');
-      }
+      Logger.log('GitHub push successful. site-data.json updated. Site will reflect changes on next page load.');
     } else {
       Logger.log('GitHub error: ' + putResp.getContentText());
     }
