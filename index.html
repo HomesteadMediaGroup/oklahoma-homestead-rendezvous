@@ -263,7 +263,6 @@ section { padding: 80px 24px; }
 .speaker-name { font-family: 'Oswald', sans-serif; font-size: 1rem; letter-spacing: 1px; text-transform: uppercase; color: var(--navy); margin-bottom: 4px; }
 .speaker-title { font-size: 0.78rem; color: var(--teal2); margin-bottom: 10px; font-weight: 600; }
 .speaker-topic { display: inline-block; background: var(--cream); border: 1px solid var(--tan); border-radius: 20px; padding: 3px 12px; font-size: 0.72rem; color: #666; margin-bottom: 12px; }
-.speaker-bio { font-size: 0.82rem; color: #666; line-height: 1.6; text-align: left; }
 .speakers-note { text-align: center; background: var(--navy); border-radius: 8px; padding: 40px 32px; max-width: 640px; margin: 0 auto; }
 .speakers-note h3 { font-family: 'Oswald', sans-serif; font-size: 1.3rem; letter-spacing: 1px; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
 .speakers-note p { color: #ccc; font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px; }
@@ -672,7 +671,7 @@ footer { background: var(--navy2); border-top: 4px solid var(--teal); padding: 4
     const grid = document.createElement('div'); grid.className = 'speakers-grid';
     data.speakers.forEach(s => {
       const photoHTML = s.photo ? `<img class="speaker-photo" src="${s.photo}" alt="${s.name}" loading="lazy">` : `<div class="speaker-photo-placeholder">🎤</div>`;
-      grid.innerHTML += `<div class="speaker-card" data-name="${s.name}" data-title="${s.title||''}" data-topic="${s.topic||''}" data-bio="${(s.bio||'').replace(/"/g,'&quot;')}" data-photo="${s.photo||''}">${photoHTML}<div class="speaker-info"><div class="speaker-name">${s.name}</div>${s.title?`<div class="speaker-title">${s.title}</div>`:''}${s.topic?`<span class="speaker-topic">${s.topic}</span>`:''}${s.bio?`<p class="speaker-bio">${s.bio}</p>`:''}<div style="margin-top:10px;font-family:'Oswald',sans-serif;font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--teal);">View Bio →</div></div></div>`;
+      grid.innerHTML += `<div class="speaker-card" data-name="${s.name}" data-title="${s.title||''}" data-topic="${s.topic||''}" data-bio="${(s.bio||'').replace(/"/g,'&quot;')}" data-photo="${s.photo||''}">${photoHTML}<div class="speaker-info"><div class="speaker-name">${s.name}</div>${s.title?`<div class="speaker-title">${s.title}</div>`:''}${s.topic?`<span class="speaker-topic">${s.topic}</span>`:''}<div style="margin-top:10px;font-family:'Oswald',sans-serif;font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--teal);">View Bio →</div></div></div>`;
     });
     container.innerHTML = ''; container.appendChild(grid);
     const follow = document.createElement('div'); follow.style = 'text-align:center;margin-top:36px;';
