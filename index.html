@@ -670,7 +670,7 @@ footer { background: var(--navy2); border-top: 4px solid var(--teal); padding: 4
   if (container && data.speakers && data.speakers.length > 0) {
     const grid = document.createElement('div'); grid.className = 'speakers-grid';
     data.speakers.forEach(s => {
-      const photoHTML = s.photo ? `<img class="speaker-photo" src="${s.photo}" alt="${s.name}" loading="lazy">` : `<div class="speaker-photo-placeholder">🎤</div>`;
+      const photoHTML = s.photo ? `<img class="speaker-photo" src="${s.photo}" alt="${s.name}">` : `<div class="speaker-photo-placeholder">🎤</div>`;
       grid.innerHTML += `<div class="speaker-card" data-name="${s.name}" data-title="${s.title||''}" data-topic="${s.topic||''}" data-bio="${(s.bio||'').replace(/"/g,'&quot;')}" data-photo="${s.photo||''}">${photoHTML}<div class="speaker-info"><div class="speaker-name">${s.name}</div>${s.title?`<div class="speaker-title">${s.title}</div>`:''}${s.topic?`<span class="speaker-topic">${s.topic}</span>`:''}<div style="margin-top:10px;font-family:'Oswald',sans-serif;font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--teal);">View Bio →</div></div></div>`;
     });
     container.innerHTML = ''; container.appendChild(grid);
