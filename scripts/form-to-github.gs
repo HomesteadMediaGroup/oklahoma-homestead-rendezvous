@@ -13,6 +13,7 @@
  *
  * NOTE: No build hook needed. site-data.json is fetched live from GitHub by the site.
  *       Form submit → GitHub push → site updates on next page load automatically.
+ *       Drive photos are downloaded and pushed to GitHub assets — no Drive URLs on live site.
  */
 
 // ── EXACT COLUMN MAP (1-indexed, based on actual sheet headers) ─────────────
@@ -115,37 +116,119 @@ function cell(row, col) {
   return v ? String(v).trim() : '';
 }
 
-function driveThumb(rawUrl, size) {
-  if (!rawUrl) return '';
-  size = size || 'w400';
-  var match = rawUrl.match(/\/d\/([a-zA-Z0-9_-]+)/) ||
-              rawUrl.match(/id=([a-zA-Z0-9_-]+)/);
-  if (!match) return rawUrl;
-  return 'https://drive.google.com/thumbnail?id=' + match[1] + '&sz=' + size;
+function slugify(name) {
+  return name.toLowerCase()
+    .replace(/[&]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
 }
 
-function buildSpeaker(row, nameCol, titleCol, topicCol, bioCol, linkCol, photoCol) {
+function getDriveFileId(url) {
+  if (!url) return null;
+  var match = url.match(/\/d\/([a-zA-Z0-9_-]+)/) ||
+              url.match(/id=([a-zA-Z0-9_-]+)/);
+  return match ? match[1] : null;
+}
+
+/**
+ * Download a Google Drive image and push it to GitHub assets/speakers/.
+ * Returns the local path (/assets/speakers/filename.jpg) on success, '' on failure.
+ */
+function uploadDriveImageToGithub(driveUrl, name, folder, token, owner, repo) {
+  var fileId = getDriveFileId(driveUrl);
+  if (!fileId) { Logger.log('No Drive file ID found in: ' + driveUrl); return ''; }
+
+  var driveFile;
+  try { driveFile = DriveApp.getFileById(fileId); }
+  catch(e) { Logger.log('Could not access Drive file ' + fileId + ': ' + e.toString()); return ''; }
+
+  var blob = driveFile.getBlob();
+  var mimeType = blob.getContentType();
+  var ext = mimeType === 'image/png' ? 'png' : 'jpg';
+  var filename = slugify(name) + '.' + ext;
+  var githubPath = folder + '/' + filename;
+  var localPath = '/' + githubPath;
+
+  var base64Content = Utilities.base64Encode(blob.getBytes());
+  var apiBase = 'https://api.github.com/repos/' + owner + '/' + repo + '/contents/' + githubPath;
+
+  // Check if file already exists (to get SHA for update)
+  var getResp = UrlFetchApp.fetch(apiBase, {
+    headers: { Authorization: 'token ' + token, Accept: 'application/vnd.github.v3+json' },
+    muteHttpExceptions: true
+  });
+
+  var payload = { message: 'Auto-upload photo for ' + name, content: base64Content };
+  if (getResp.getResponseCode() === 200) {
+    payload.sha = JSON.parse(getResp.getContentText()).sha;
+  }
+
+  var putResp = UrlFetchApp.fetch(apiBase, {
+    method: 'PUT',
+    headers: {
+      Authorization: 'token ' + token,
+      Accept: 'application/vnd.github.v3+json',
+      'Content-Type': 'application/json'
+    },
+    payload: JSON.stringify(payload),
+    muteHttpExceptions: true
+  });
+
+  var code = putResp.getResponseCode();
+  if (code === 200 || code === 201) {
+    Logger.log('Photo uploaded to GitHub: ' + githubPath);
+    return localPath;
+  } else {
+    Logger.log('Photo upload failed (' + code + '): ' + putResp.getContentText());
+    return '';
+  }
+}
+
+function buildSpeaker(row, nameCol, titleCol, topicCol, bioCol, linkCol, photoCol, token, owner, repo) {
   var name = cell(row, nameCol);
   if (!name) return null;
+
+  var rawPhoto = cell(row, photoCol);
+  var photo = '';
+  if (rawPhoto) {
+    // If it looks like a Drive URL, upload to GitHub and use local path
+    if (getDriveFileId(rawPhoto)) {
+      photo = uploadDriveImageToGithub(rawPhoto, name, 'assets/speakers', token, owner, repo);
+    } else {
+      photo = rawPhoto; // already a direct URL
+    }
+  }
+
   return {
     name:  name,
     title: cell(row, titleCol),
     topic: cell(row, topicCol),
     bio:   cell(row, bioCol),
     link:  cell(row, linkCol),
-    photo: driveThumb(cell(row, photoCol), 'w400')
+    photo: photo
   };
 }
 
-function buildSponsor(row, nameCol, tagCol, levelCol, siteCol, logoCol) {
+function buildSponsor(row, nameCol, tagCol, levelCol, siteCol, logoCol, token, owner, repo) {
   var name = cell(row, nameCol);
   if (!name) return null;
+
+  var rawLogo = cell(row, logoCol);
+  var logo = '';
+  if (rawLogo) {
+    if (getDriveFileId(rawLogo)) {
+      logo = uploadDriveImageToGithub(rawLogo, name, 'assets/sponsors', token, owner, repo);
+    } else {
+      logo = rawLogo;
+    }
+  }
+
   return {
     name:    name,
     tag:     cell(row, tagCol),
     level:   cell(row, levelCol) || 'sponsor',
     website: cell(row, siteCol),
-    logo:    driveThumb(cell(row, logoCol), 'w300')
+    logo:    logo
   };
 }
 
@@ -180,33 +263,36 @@ function onFormSubmit(e) {
 
     Logger.log('Processing row ' + lastRow + ' — name: ' + cell(row, COL.fullName));
 
-    // Build new speakers from this submission (skip blanks)
-    var newSpeakers = [
-      buildSpeaker(row, COL.sp1Name, COL.sp1Title, COL.sp1Topic, COL.sp1Bio, COL.sp1Link, COL.sp1Photo),
-      buildSpeaker(row, COL.sp2Name, COL.sp2Title, COL.sp2Topic, COL.sp2Bio, COL.sp2Link, COL.sp2Photo),
-      buildSpeaker(row, COL.sp3Name, COL.sp3Title, COL.sp3Topic, COL.sp3Bio, COL.sp3Link, COL.sp3Photo),
-      buildSpeaker(row, COL.sp4Name, COL.sp4Title, COL.sp4Topic, COL.sp4Bio, COL.sp4Link, COL.sp4Photo)
-    ].filter(Boolean);
-
-    // Build new sponsors from this submission (skip blanks)
-    var newSponsors = [
-      buildSponsor(row, COL.spon1Name, COL.spon1Tag, COL.spon1Level, COL.spon1Site, COL.spon1Logo),
-      buildSponsor(row, COL.spon2Name, COL.spon2Tag, COL.spon2Level, COL.spon2Site, COL.spon2Logo),
-      buildSponsor(row, COL.spon3Name, COL.spon3Tag, COL.spon3Level, COL.spon3Site, COL.spon3Logo),
-      buildSponsor(row, COL.spon4Name, COL.spon4Tag, COL.spon4Level, COL.spon4Site, COL.spon4Logo),
-      buildSponsor(row, COL.spon5Name, COL.spon5Tag, COL.spon5Level, COL.spon5Site, COL.spon5Logo),
-      buildSponsor(row, COL.spon6Name, COL.spon6Tag, COL.spon6Level, COL.spon6Site, COL.spon6Logo)
-    ].filter(Boolean);
-
-    Logger.log('New speakers found: ' + newSpeakers.length);
-    Logger.log('New sponsors found: ' + newSponsors.length);
-
-    // Fetch current site-data.json from GitHub
+    // Load script properties
     var props   = PropertiesService.getScriptProperties().getProperties();
     var owner   = props.GITHUB_OWNER;
     var repo    = props.GITHUB_REPO;
     var file    = props.GITHUB_FILE || 'site-data.json';
     var token   = props.GITHUB_TOKEN;
+
+    // Build new speakers from this submission (Drive photos auto-uploaded to GitHub)
+    var newSpeakers = [
+      buildSpeaker(row, COL.sp1Name, COL.sp1Title, COL.sp1Topic, COL.sp1Bio, COL.sp1Link, COL.sp1Photo, token, owner, repo),
+      buildSpeaker(row, COL.sp2Name, COL.sp2Title, COL.sp2Topic, COL.sp2Bio, COL.sp2Link, COL.sp2Photo, token, owner, repo),
+      buildSpeaker(row, COL.sp3Name, COL.sp3Title, COL.sp3Topic, COL.sp3Bio, COL.sp3Link, COL.sp3Photo, token, owner, repo),
+      buildSpeaker(row, COL.sp4Name, COL.sp4Title, COL.sp4Topic, COL.sp4Bio, COL.sp4Link, COL.sp4Photo, token, owner, repo)
+    ].filter(Boolean);
+
+    // Build new sponsors from this submission
+    var newSponsors = [
+      buildSponsor(row, COL.spon1Name, COL.spon1Tag, COL.spon1Level, COL.spon1Site, COL.spon1Logo, token, owner, repo),
+      buildSponsor(row, COL.spon2Name, COL.spon2Tag, COL.spon2Level, COL.spon2Site, COL.spon2Logo, token, owner, repo),
+      buildSponsor(row, COL.spon3Name, COL.spon3Tag, COL.spon3Level, COL.spon3Site, COL.spon3Logo, token, owner, repo),
+      buildSponsor(row, COL.spon4Name, COL.spon4Tag, COL.spon4Level, COL.spon4Site, COL.spon4Logo, token, owner, repo),
+      buildSponsor(row, COL.spon5Name, COL.spon5Tag, COL.spon5Level, COL.spon5Site, COL.spon5Logo, token, owner, repo),
+      buildSponsor(row, COL.spon6Name, COL.spon6Tag, COL.spon6Level, COL.spon6Site, COL.spon6Logo, token, owner, repo)
+    ].filter(Boolean);
+
+    Logger.log('New speakers found: ' + newSpeakers.length);
+    Logger.log('New sponsors found: ' + newSponsors.length);
+    Logger.log('Done. Photos uploaded to GitHub. Site updates on next page load.');
+
+    // Fetch current site-data.json from GitHub
     var apiBase = 'https://api.github.com/repos/' + owner + '/' + repo + '/contents/' + file;
 
     var getResp = UrlFetchApp.fetch(apiBase, {
@@ -252,7 +338,13 @@ function onFormSubmit(e) {
     if (ticketUrl) existingData.ticket_url = ticketUrl;
 
     var logoLink = cell(row, COL.logoLink);
-    if (logoLink) existingData.logo_path = driveThumb(logoLink, 'w400');
+    if (logoLink) {
+      if (getDriveFileId(logoLink)) {
+        existingData.logo_path = uploadDriveImageToGithub(logoLink, 'event-logo', 'assets', token, owner, repo);
+      } else {
+        existingData.logo_path = logoLink;
+      }
+    }
 
     // Push updated JSON to GitHub
     var newContent = Utilities.base64Encode(JSON.stringify(existingData, null, 2));
@@ -272,7 +364,7 @@ function onFormSubmit(e) {
     });
 
     var code = putResp.getResponseCode();
-    Logger.log('GitHub push response: ' + code);
+    Logger.log('GitHub push: ' + code);
 
     if (code === 200) {
       Logger.log('GitHub push successful. site-data.json updated. Site will reflect changes on next page load.');
