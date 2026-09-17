@@ -97,6 +97,30 @@
       "bio": "",
       "link": "",
       "photo": "/assets/speakers/joyce-morris.png"
+    },
+    {
+      "name": "Dan Westwood",
+      "title": "",
+      "topic": "Botanical Salves",
+      "bio": "",
+      "link": "",
+      "photo": "/assets/speakers/dan-westwood.png"
+    },
+    {
+      "name": "Valerie Carter",
+      "title": "",
+      "topic": "Dangerous Creatures",
+      "bio": "",
+      "link": "",
+      "photo": "/assets/speakers/valerie-carter.png"
+    },
+    {
+      "name": "Kym Meyers",
+      "title": "",
+      "topic": "Soap making",
+      "bio": "",
+      "link": "",
+      "photo": "/assets/speakers/kym-meyers.png"
     }
   ],
   "sponsors": [
