@@ -40,7 +40,31 @@
       "topic": "7 Steps to Self-Reliance",
       "bio": "Ryan Hooper is co-founder of The Farm2Table Show and a special guest at this year's Oklahoma Homestead Rendezvous. A storyteller and speaker passionate about faith-based homesteading and self-sufficiency, he brings heart, humor, and real-world insight to conversations about growing, raising, and sourcing food locally. This year he's presenting \"7 Steps to Self-Reliance,\" drawing on his own journey to help audiences live more intentionally and take ownership of their food systems. Rooted in faith, family, and community, Ryan inspires people toward a more resilient, purpose-driven lifestyle.",
       "link": "",
-      "photo": "/assets/speakers/ryan-hooper.jpg"
+      "photo": "/assets/speakers/ryan-hooper.png"
+    },
+    {
+      "name": "Dr. Eli Camp",
+      "title": "Dr. Of Homeopathy medicine",
+      "topic": "First Aid / Homeopathy",
+      "bio": "",
+      "link": "",
+      "photo": "/assets/speakers/dr-eli-camp.png"
+    },
+    {
+      "name": "Mike Brown",
+      "title": "Mikes Club Founder",
+      "topic": "Urban Self Sustainability",
+      "bio": "",
+      "link": "",
+      "photo": "/assets/speakers/mike-brown.png"
+    },
+    {
+      "name": "Marlo Johnston",
+      "title": "Managing Heavy Equipment",
+      "topic": "",
+      "bio": "",
+      "link": "",
+      "photo": "/assets/speakers/marlo-johnston.png"
     }
   ],
   "sponsors": [
