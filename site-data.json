@@ -88,7 +88,7 @@
       "topic": "",
       "bio": "",
       "link": "",
-      "photo": "/assets/speakers/victoria-reicheneker.png"
+      "photo": "/assets/speakers/victoria-reicheneker.jpg"
     },
     {
       "name": "Joyce Morris",
@@ -137,6 +137,30 @@
       "bio": "",
       "link": "",
       "photo": "/assets/speakers/amy-lenard.jpg"
+    },
+    {
+      "name": "Tim and Ruth Field",
+      "title": "",
+      "topic": "Looming for personal and small businesses",
+      "bio": "",
+      "link": "",
+      "photo": "/assets/speakers/tim-and-ruth-field.png"
+    },
+    {
+      "name": "Kym Myers",
+      "title": "",
+      "topic": "Soap Making",
+      "bio": "",
+      "link": "",
+      "photo": "/assets/speakers/kym-myers.png"
+    },
+    {
+      "name": "Terri Estrada",
+      "title": "",
+      "topic": "",
+      "bio": "",
+      "link": "",
+      "photo": "/assets/speakers/terri-estrada.png"
     }
   ],
   "sponsors": [
