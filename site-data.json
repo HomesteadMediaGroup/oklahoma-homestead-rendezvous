@@ -84,7 +84,7 @@
     },
     {
       "name": "Victoria Reicheneker",
-      "title": "",
+      "title": "Dreamweaver Permiculture",
       "topic": "",
       "bio": "",
       "link": "",
@@ -121,6 +121,22 @@
       "bio": "",
       "link": "",
       "photo": "/assets/speakers/kym-meyers.png"
+    },
+    {
+      "name": "Chris Thompson",
+      "title": "Hippy Cow Yay Homestead",
+      "topic": "Cast Iron Cooking",
+      "bio": "",
+      "link": "",
+      "photo": "/assets/speakers/chris-thompson.jpg"
+    },
+    {
+      "name": "Amy Lenard",
+      "title": "Lenard Mountain Homestead",
+      "topic": "Homesteading and Prepping",
+      "bio": "",
+      "link": "",
+      "photo": "/assets/speakers/amy-lenard.jpg"
     }
   ],
   "sponsors": [
