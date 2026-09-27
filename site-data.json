@@ -1,15 +1,7 @@
 {
   "ticket_url": "https://events.ticketleap.com/tickets/oklahomahomesteadrendezvous/oklahoma-homestead-rendezvous",
-  "logo_path": "https://drive.google.com/thumbnail?id=146ox6qhzK7T61zec4Eeo6O9_FGNn8C1_&sz=w400",
+  "logo_path": "/assets/okhr-logo.png",
   "speakers": [
-    {
-      "name": "Dewayne Hall",
-      "title": "Red Feather Farms",
-      "topic": "Herbal Remedies & Meat Goats",
-      "bio": "Dewayne Hall is a national speaker on all things homesteading, from wildcrafting to animal husbandry, with a lifetime of knowledge that began with his grandfather teaching him woods skills, wild edibles, medicinal plants, and how to live in harmony with the land ? later deepened by time on the Navajo Reservation and a Texas A&M education. He went on to manage a 52-section ranch in west Texas and teach Agriculture and Biology for several years before retiring and, in 2016, building Red Feather Farms with his wife on a once-abandoned property. There they raise TexMaster meat goats, pasture chickens, honey bees, and an Elderberry farm, running their own private-label meat and herbal business while practicing rainwater catchment, composting, and other sustainable conservation methods. True to his motto \"Homesteading on a Budget,\" Dewayne shares his experience through Red Feather Farms on Facebook and Instagram.",
-      "link": "",
-      "photo": "/assets/speakers/dewayne-hall.jpg"
-    },
     {
       "name": "Pat Cotten",
       "title": "Bending Tree Ranch",
@@ -33,14 +25,6 @@
       "bio": "Chris and LaRaine Cihak live off-grid on 40 acres in SE Oklahoma, powered by a solar system and a rainwater collection system Chris designed and built to serve as their main water source, along with smaller systems for their animals and garden. Their homestead journey began back in 2000 in Nebraska, where they started gardening, foraging, and hunting on a large backyard plot ? even collecting rainwater in 5-gallon buckets for their houseplants. Today their homestead includes raised garden beds, a greenhouse, and flowers, along with dogs, cats, layer chickens, meat chickens, and rabbits, with sheep planned for the future. Above all, Chris and LaRaine love sharing knowledge, learning from others, and building community.",
       "link": "",
       "photo": "/assets/speakers/laraine-chris-cihak.jpg"
-    },
-    {
-      "name": "Ryan Hooper",
-      "title": "The Farm2Table Show",
-      "topic": "7 Steps to Self-Reliance",
-      "bio": "Ryan Hooper is co-founder of The Farm2Table Show and a special guest at this year's Oklahoma Homestead Rendezvous. A storyteller and speaker passionate about faith-based homesteading and self-sufficiency, he brings heart, humor, and real-world insight to conversations about growing, raising, and sourcing food locally. This year he's presenting \"7 Steps to Self-Reliance,\" drawing on his own journey to help audiences live more intentionally and take ownership of their food systems. Rooted in faith, family, and community, Ryan inspires people toward a more resilient, purpose-driven lifestyle.",
-      "link": "",
-      "photo": "/assets/speakers/ryan-hooper.png"
     },
     {
       "name": "Dr. Eli Camp",
@@ -67,14 +51,6 @@
       "photo": "/assets/speakers/marlo-johnston.png"
     },
     {
-      "name": "Malachi Clouse",
-      "title": "",
-      "topic": "",
-      "bio": "",
-      "link": "",
-      "photo": "/assets/speakers/malachi-clouse.png"
-    },
-    {
       "name": "Lynn Sally",
       "title": "",
       "topic": "",
@@ -91,14 +67,6 @@
       "photo": "/assets/speakers/victoria-reicheneker.jpg"
     },
     {
-      "name": "Joyce Morris",
-      "title": "Morris Patch of Heaven Homestead",
-      "topic": "Fermenting",
-      "bio": "Joyce lives a rich, full life on 10 beautiful acres with her husband Gene, where they raise sheep, cows, ducks, and chickens?and tend to a bountiful garden that keeps her pantry and heart full year-round.\nAs a proud mom of 9 (yes, nine!)?6 boys and 3 girls?and ?Nana? to 7 sweet grandlittles, Joyce brings wisdom, warmth, and a whole lot of experience to everything she does.\nJoyce is known for teaching traditional skills like fermentation, making herbal tinctures, and all things self-sufficiency.\nCome learn from a true homesteading mama who lives what she teaches and loves sharing it with others.",
-      "link": "",
-      "photo": "/assets/speakers/joyce-morris.jpg"
-    },
-    {
       "name": "Dan Westwood",
       "title": "",
       "topic": "Botanical Salves",
@@ -113,22 +81,6 @@
       "bio": "",
       "link": "",
       "photo": "/assets/speakers/valerie-carter.png"
-    },
-    {
-      "name": "Chris Thompson",
-      "title": "Hippy Cow Yay Homestead",
-      "topic": "Cast Iron Cooking",
-      "bio": "",
-      "link": "",
-      "photo": "/assets/speakers/chris-thompson.jpg"
-    },
-    {
-      "name": "Amy Lenard",
-      "title": "Lenard Mountain Homestead",
-      "topic": "Homesteading and Prepping",
-      "bio": "",
-      "link": "",
-      "photo": "/assets/speakers/amy-lenard.jpg"
     },
     {
       "name": "Tim and Ruth Field",
@@ -155,20 +107,20 @@
       "photo": "/assets/speakers/terri-estrada.png"
     },
     {
-      "name": "Terry Jarrard",
-      "title": "TNT Homestead",
-      "topic": "Solar and Off Grid Living",
-      "bio": "",
-      "link": "",
-      "photo": "/assets/speakers/terry-jarrard.png"
-    },
-    {
       "name": "Chris Reaves",
       "title": "",
       "topic": "Building a Homestead",
       "bio": "",
       "link": "",
       "photo": "/assets/speakers/chris-reaves.png"
+    },
+    {
+      "name": "Ruthann Zimmerman",
+      "title": "",
+      "topic": "",
+      "bio": "Hello, My name is RuthAnn Zimmerman. Out of all the places you could?ve landed in the whole wide world of the internet I am glad you landed here!\nMy husband Elvin and I purchased our little corner of the world (NE Iowa) as newlyweds in 2000. We have 7 children, 2 sons-in-law and a grandson. The 5 youngest children still live at home, while the oldest 2 are married and have homes of their own. \n\n Although the word ?homesteading? is fairly new to us, we aren?t new to the lifestyle of homesteading. My husband and I both were born and raised in the Old Order Mennonite culture and remained part of that community until early 2007. In this family oriented, self sufficient culture of our childhood we were immersed in what the modern world now calls ?Homesteading?, to us it was simply life. In 2007, after meeting Jesus in a personal way we left the Mennonite church in pursuit of more relationship with Jesus and less rules and religion.",
+      "link": "https://ruthannzimm.com",
+      "photo": "/assets/speakers/ruthann-zimmerman.jpg"
     }
   ],
   "sponsors": [
